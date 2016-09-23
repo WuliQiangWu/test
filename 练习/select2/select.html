@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="select2.min.css"/>
+</head>
+
+<script src="jquery-1.12.3.min.js"></script>
+    <script src="select2.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".js-example-basic-multiple").select2();
+        });
+    </script>
+
+
+    <label for="id_label_single">
+        Click this to highlight the single select element
+
+        <select class="js-example-basic-single js-states form-control" id="id_label_single"></select>
+    </label>
+
+    <label for="id_label_multiple">
+        Click this to highlight the multiple select element
+
+        <select class="js-example-basic-multiple js-states form-control" id="id_label_multiple" multiple="multiple"></select>
+    </label>
+</body>
+</html>

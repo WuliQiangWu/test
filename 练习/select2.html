@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.3.min.js"></script>
+</head>
+<body>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label col-md-4">重要级别</label>
+            <div class="col-md-8">
+                <select id="Importance" name="Importance" class="form-control select2" placeholder="重要级别..."></select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label col-md-4">认可程度</label>
+            <div class="col-md-8">
+                <select id="Recognition" name="Recognition" class="form-control select2" placeholder="认可程度..."></select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label col-md-4">吸烟</label>
+            <div class="col-md-8">
+                <select id="Smoking" name="Smoking" type="text" class="form-control select2" placeholder="吸烟...">
+                    <option>吸烟</option>
+                    <option>不吸烟</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $(".js-example-basic-single").select2();
+        });
+
+    </script>
+</body>
+</html>

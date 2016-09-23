@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<meta charset="UTF-8">
+		<title>title</title>
+	</head>
+	<body>
+		<button id="run">开启网络麦克风</button><Br/>
+    	<auido id="webcam"></auido>
+		<script>
+		//检测浏览器是否支持  navigator.getUserMedia
+			function hasGetUserMedia(){
+        		return !!(navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia || navigator.msGetUserMedia);
+        	}
+			if(hasGetUserMedia()){
+				console.log('your browser support getUserMedia')
+			}
+			else{
+				console.log('your browser not support getUserMedia');
+			}
+			//获取输入设备的访问权限
+			
+			//不显示供应商的前缀；
+			navigator.webkitGetUserMedia('audio',function(localMediaStream){
+				var audio = document.querySelector('audio');
+				audio.src = window.webkitURL.createObjectURL(localMediaStream);
+			//getUserMedia使用时onloadedmetadata没有在Chrome中显示。	
+				audio.onloadeddata = function(e){
+					
+				}
+			},onFailSoHard)
+			var onFailSoHard = function(){
+				console.log('Reeeejected!',e);
+			}
+			
+			var context = new window.webkitAudioContext();
+			navigator.webkitGetUserMedia({audio: true}, function(stream) {
+			var microphone = context.createMediaStreamSource(stream);
+			var filter = context.createBiquadFilter();
+			microphone.connect(filter);
+			filter.connect(context.destination);
+			}, onFailSoHard);
+		</script>
+	</body>
+</html>

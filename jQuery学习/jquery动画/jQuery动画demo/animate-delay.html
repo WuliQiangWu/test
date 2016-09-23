@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #panel{
+            width:100px;
+            height:100px;
+            background:#c0c0c0;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div id="panel"></div>
+<script src="js/jquery-3.1.0.min.js"></script>
+<script>
+    $(function(){
+        $('#panel').click(function(){
+            $(this).animate({left:'500px',height:'200px',opacity:'1'},1000).delay(300)
+                    .animate({top:'200px',width:'200px'},1000,function(){
+                        $(this).css('background','red')
+                    }).delay(600)
+        })
+    })
+
+</script>
+</body>
+</html>

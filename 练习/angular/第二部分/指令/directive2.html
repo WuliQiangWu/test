@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <hello>
+        <div>这里是指令的内部。</div>
+    </hello>
+    <Script src="angular-1.3.0.js"></Script>
+    <script>
+        var myApp = angular.module('myApp',[]);
+        myApp.directive('hello',function(){
+            return{
+                restrict:'AE',
+                transclude:true,
+                template:'<div>Hello everyone!<div ng-transclude></div></div>'
+            }
+        })
+    </script>
+</body>
+</html>

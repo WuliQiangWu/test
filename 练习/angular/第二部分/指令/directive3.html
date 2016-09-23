@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>指令控制器交互</title>
+</head>
+<body>
+    <div ng-controller="myCtrl">
+        <loader howToLoad="loadData">加载数据</loader>
+    </div>
+    <div ng-controller="myCtr2">
+        <loader howToLoad="loadData2">加载数据</loader>
+    </div>
+    <script src="angular-1.3.0.js"></script>
+    <script>
+        var myApp= angular.module('myApp',[]);
+        myApp.controller('myCtrl',['$scope',function($scope){
+            $scope.loadData=function(){
+                console.log('数据加载中...')
+            }
+        }]);
+        myApp.controller('myCtr2',['$scope',function($scope){
+            $scope.loadData2=function(){
+                console.log('数据加载中...')
+            }
+        }]);
+        myApp.directive('loader',function(){
+            return{
+                restrict:'AE',
+                link:function(scope,attr,element){
+                    element.bind('mouseenter',function(){
+//                        scope.loadData();
+//                        scope.$apply('loadData()');
+                        scope.$apply(attr.howtoload());
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

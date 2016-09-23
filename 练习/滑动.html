@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-size: 100px;
+        }
+        html{
+            width:100%;
+            height:100%;
+        }
+        .wrapper {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .anim {
+            transition: all 500ms ease-out 0s;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="inner">
+        <div class="page">1</div>
+        <div class="page">2</div>
+        <div class="page">3</div>
+        <div class="page">4</div>
+        <div class="page">5</div>
+        <div class="page">6</div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        function Slide(params) {
+            this.params = params;
+            this.init();//参数重组
+            this.install();//dom初始化
+            this.bind();//滑动事件
+            this.start();//第一屏
+        }
+
+        Slide.prototype.init = function () {
+            var setting = {
+                isVertical: true,
+                der: 0.1,//屏幕的十分之一
+                startAt: 0,
+                animateClass: 'anim'
+            }
+
+            var params = this.params || {};
+            for (var i in setting) {
+                if (!params.hasOwnProperty(i)) {
+                    params[i] = setting[i];
+                }
+            }
+            this.params = params;
+        }
+
+        Slide.prototype.install = function () {
+            this.h = document.documentElement.clientHeight;
+            this.w = document.documentElement.clientWidth;
+            var pageEle = document.getElementsByClassName('page'),
+                    len = pageEle.length,
+                    i = 0;
+            this.inner = pageEle[0].parentNode;
+            this.length = len;
+
+            for (; i < len; i++) {
+                pageEle[i].style.width = this.w + 'px';
+                pageEle[i].style.height = this.h + 'px';
+
+            }
+        }
+
+        Slide.prototype.start = function () {
+            var start = this.params.startAt;
+            var isVertical = this.params.isVertical;
+            if (start > this.length - 1) {
+                start = this.length - 1;
+            }
+
+            this.activeIndex = start;
+            this.inner.classList.remove('anim');
+            var distance = -start * (isVertical ? this.h : this.w);
+            this.move(distance);
+        }
+
+        Slide.prototype.bind = function () {
+            var me = this,
+                    ele = this.inner;
+
+            ele.addEventListener('touchstart', function (e) {
+                me.posX = e.targetTouches[0].pageX;
+                me.posY = e.targetTouches[0].pageY;
+            })
+
+            ele.addEventListener('touchend', function (e) {
+                var sub;
+                if (me.params.isVertical) {
+                    sub = (e.changedTouches[0].pageY - me.posY) / me.h;
+                } else {
+                    sub = (e.changedTouches[0].pageX - me.posX) / me.w;
+                }
+
+                if (sub > me.params.der || sub < -me.params.der) {
+                    me.activeIndex += sub > 0 ? -1 : 1;
+                }
+                if (me.activeIndex <= 0) me.activeIndex = 0;
+                if (me.activeIndex >= me.length - 1) me.activeIndex = me.length - 1;
+
+                me.inner.classList.add('anim');
+                var distance = -me.activeIndex * (me.params.isVertical ? me.h : me.w);
+                me.move(distance);
+            })
+        }
+
+        Slide.prototype.move = function (distance) {
+            var x = '0px', y = '0px';
+            var isVertical = this.params.isVertical;
+
+            if (isVertical) {
+                y = distance + 'px'
+            } else {
+                x = distance + 'px'
+            }
+
+            this.inner.style.cssText = ';transform:translate3d(' + x + ',' + y + ',0px)'
+        }
+        window.Slide = Slide;
+    })(this)
+
+    new Slide()
+
+
+</script>
+</body>
+</html>

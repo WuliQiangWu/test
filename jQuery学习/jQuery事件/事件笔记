@@ -1,0 +1,132 @@
+jQuery中的事件
+1. 加载DOM
+jQuery中使用$(document).ready() 代替JavaScript中的window.onload方法。两者之间还是有差别的。
+window.onload是在页面中所有元素（包括元素的所有关联文件）完全加载完成之后浏览器才执行，此时JS可以访问到页面中的任何元素。
+$(document).ready()方法是在DOM完全就绪的时候可以被调用，但是并不是所有的关联文件都已经加载完成了。比如说 某些图片未加载完成，但是DOM结构已经就绪。此时$(document).ready()方法就可以被调用。
+如果说在$(document).ready()设置图片属性（如宽、高）但是图片如果未加载完成的话，这些属性就不一定生效了，要解决这个问题，可以使用类似$('img').load()方法,绑定在window上时就相当于window.onload方法。
+window.onload只能使用一次，而$(document).ready()可以多次使用。
+$(document).ready()的简写
+$(function(){
+    //要写的东西
+})
+当$()时，默认参数是'document',所以也可以写成$().ready()
+
+2. 事件绑定 (相比JS来说，事件绑定少写了一个on,如js中onclick在jQuery中只有click)
+bind(),调用格式为bind(type[,data],fn)
+第一个参数是事件类型（click,focus,resize,load,mouseover等），也可以自定义名称。
+第二个参事是可选参数，作为event.data属性值传递给事件对象的额外数据对象。
+第三个参数是用来绑定的处理函数。
+
+3. 改变绑定事件的类型
+可以在当前事件之后继续绑定事件例如:
+$(function(){
+    $('h5')
+        .bind('mouseover',function(){
+            $(this).next().show();
+      }).bind('mouseout',function(){
+            $(this).next().hide();})
+})
+
+4. 简写绑定事件 （上述例子举例）
+$(function(){
+    $('h5').mouseover(function(){
+            $(this).next().show()
+         }).mouseout(function(){
+           $(this).next().hide()})
+})
+
+5. 合成事件
+jQuery中的合成事件有两个hover()和toggle();
+
+hover()方法 语法结构为hover(enter,leave);光标进入时执行第一个函数，光标移出时执行第二个函数。
+
+toggle()方法 语法结构物toggle(fn1,fn2,fn3...); 模拟鼠标点击事件，点击鼠标依次触发指定函数，执行完最后一个，重新执行第一个函数。循环执行。
+toggle()还可以用来切换元素的可见状态。
+
+6. 事件冒泡
+页面上有很多的事件，也可以多个元素响应同一个事件，如果他们都绑定了例如click事件。此时，如果点击最底层的DOM节点上的事件的时候，会依次向外层触发click事件，就想水泡一样往上面冒，直到最顶层的DOM节点。
+
+解决冒泡事件的一些方法：
+·1 事件对象，由jQuery封装扩展
+$('element').bind('click',function(event){ //event对象
+//...
+})
+当单击'element'元素时，事件对象被创建，这个事件对象只有事件处理函数才能访问到，事件处理函数执行完毕之后，事件对象就被销毁了。
+
+·2 停止冒泡事件
+停止事件冒泡可以阻止事件中其他对象的事件处理函数被执行。jQuery提供了stopPropagation()方法来停止冒泡。
+例如：
+$('element').bind('click',function(event){ //event对象
+    //...
+    event.stopPropagation(); //停止冒泡事件
+})
+·3 阻止默认行为
+有时候需要阻止元素自带的默认行为，如表单的提交和a链接的跳转。jQuery提供了preventDefault()来阻止元素的默认行为。
+如果要同时停止事件的冒泡行为和默认行为，可以在事件处理函数中返回false,这是在同一个事件上同时调用stopPropagation()方法和preventDefault()方法的简写。
+
+
+7. 事件对象的属性
+ ·1 event.type();可以获取到事件的类型。
+ ·2 event.preventDefault();可以阻止默认的事件行为。
+ .3 event.stopPropagation();可以阻止事件的冒泡。
+ .4 event.target();可以获取到触发事件的元素。
+ .5 event.relatedTarget();
+ .6 event.pageX和event.pageY;获取到光标相对于页面的x和y坐标
+ .7 event.which();在鼠标单击事件中获取到鼠标的左、中、右建，在键盘事件中获取键盘的按键。
+ .8 event.metaKey(); 键盘实践中获取<ctrl>键。
+
+8. 移除事件
+unbind(); 语法结构 unbind([type],[data])
+第一个参数是事件类型，第二个参数是将要移除的函数。 具体说明：
+ ·1如果没有参数，则删除所有绑定的事件
+ ·2如果提供了事件类型作为参数，则只删除该类型的绑定事件。
+ .3如果把在绑定时传递的函数作为的二个参数，则只有这个特定的事件处理函数会被删除。
+
+ 对于只需要触发一次，随后就要立即删除绑定的情况，jQuery提供了一种方法叫做one();
+ one()方法使用方法和bind()方法类似
+
+9. 模拟操作
+有的时候需要通过模拟用户操作，来达到一些效果（比如说单击），例如在进入页面的时候就触发点击效果，并不需要用户主动去点击。
+jQuery提供了一种叫做trigger()方法完成模拟操作。
+trigger()不仅可以触发浏览器支持的具有相同名称的事件，而且可以触发自定义事件名的事件。
+
+10. 执行默认操作
+trigger()方法触发之后，会执行浏览器的默认操作，例如$('input').trigger('focus'); 不仅会触发input元素绑定的focus事件，也会使<input>元素本身得到焦点。如果只想触发绑定的focus，可以用另一个方法triggerHandler()方法。
+$('input').triggerHandler('focus');该方法会触发input元素上绑定的特定事件，同时取消浏览器对此事件的默认操作，即只触发focus，不会获得焦点。
+
+10. 其他用法
+ ·1绑定多个事件。例如 $(function(){
+    $('div').bind('mosueove mouseout',function(){
+        $(this).toggleClass('over')
+    })
+ })
+ .2 添加事件命名空间，便于管理。
+ $(function(){
+    $('div').bind('click.plugin',function(){
+        $('body').append('<p>click事件</p>')
+    });
+    $('div').bind('mouseover.plugin',function(){
+        $('body').append('<p>mouseover事件</p>')
+    });
+    $('div').bind('dblclick',function(){
+            $('body').append('<p>dblclick事件</p>')
+    });
+    $('#btn').bind(function(){
+        $('div').unbind('.plugin')
+    })
+    pugin的命名空间被删除。而dbl则不被删除
+ })
+
+ .3相同的事件名称，不同命名空间执行方法。
+ $(function(){
+     $('div').bind('click',function(){
+         $('body').append('<p>click事件</p>')
+     });
+     $('div').bind('click.plugin',function(){
+         $('body').append('<p>click.plugin事件</p>')
+     });
+     $('button').click(function(){
+        $('div').trigger('click!') click后面的感叹号非常重要。作用是匹配所有不包含在命名空间中的click方法
+     })
+     pugin的命名空间被删除。而dbl则不被删除
+  })

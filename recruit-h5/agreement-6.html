@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+<title>注册</title>
+<meta name="renderer" content="webkit">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="注册">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<script type="application/javascript" src="js/fastclick.js"></script> 
+<script type="application/javascript">
+	function setFontSize(){
+        document.documentElement.style.fontSize=window.innerWidth/16+'px';
+    }
+    setFontSize();
+    window.addEventListener('resize',function(){
+        setFontSize();
+    });
+    window.addEventListener('load', function () {
+		FastClick.attach(document.body);
+	}, false);
+</script>
+<link rel="stylesheet" href="css/recruit-h5.css">
+</head>
+
+<body ontouchstart="" class="rc-agreement">
+    <header class="rc-agree-header">
+        <div class="rc-agree-header-article glb-for-screen">
+            <h1>金榜题名</h1>
+            <p>码上推广金榜题名保险轻松获取高额提成注册成功后还有预付提成款</p>
+        </div>
+        <figure></figure>
+        <a href="javascript:void(0);" class="glb-logo"></a>
+    </header>
+    <article class="rc-agre-article">
+        <figure class="rc-agre-article-image">
+        
+        </figure>
+        <section>
+            <form class="glb-form">
+                
+                <div class="glb-form-cell">
+                    <div class="glb-form-cell-primary">
+                        <input type="checkbox" id="glb-agreement" class="glb-for-screen" checked>
+                        <label class="glb-para-small-red agreement" for="glb-agreement"><span class="glb-icon-squre"></span>我已阅读并同意该条款</label>
+                    </div>
+                </div>
+                
+                <div class="glb-form-cell">
+                    <div class="glb-form-cell-primary">
+                        <input type="submit" class="glb-btn glb-btn-primary" value="提交">
+                    </div>
+                </div>
+                
+            </form>
+        </section>
+    </article>
+    <script type="application/javascript">
+        +function(){
+            var agreement=document.querySelector('#glb-agreement');
+            var submits=document.querySelector('input[type="submit"]');
+            agreement.addEventListener('change',function(){
+                if(this.checked){
+                    submits.removeAttribute('disabled');
+                }else {
+                    submits.setAttribute('disabled','true');
+                }
+            },false);
+        }();
+    </script>
+</body>
+</html>

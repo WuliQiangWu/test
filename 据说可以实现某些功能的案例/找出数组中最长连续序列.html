@@ -1,0 +1,49 @@
+<script>
+function maxSequence(array,step){
+    var _array = array.slice(),
+            _step = 1,
+            _arrayTemp = [],
+            i = 0;
+    var parseLogic = {
+        parseResults: [],
+        set: function(n){
+            this.parseResults[this.parseResults.length-1].push(n);
+        },
+        get: function(){
+            return this.parseResults[this.parseResults.length-1];
+        },
+        addItem: function(){
+            this.parseResults.push([]);
+        },
+        sortByAsc: function(){
+            this.parseResults.sort(function(a,b){
+                return a.length - b.length;
+            });
+        }
+    };
+    _step = step || _step;
+    _array.sort(function(a,b){
+        return a - b;
+    });
+    for(i = 0;i<_array.length;i++){
+        if(_array[i] != _array[i+1]){
+            _arrayTemp.push(_array[i]);
+        }
+    }
+    _array = _arrayTemp.slice();
+    _arrayTemp = [];
+    parseLogic.addItem();
+    for(i = 0;i<_array.length;i++){
+        if(_array[i]+_step == _array[i+1]){
+            parseLogic.set(_array[i]);
+            continue;
+        }
+        if(_array[i]-_step == _array[i-1]){
+            parseLogic.set(_array[i]);
+            parseLogic.addItem();
+        }
+    }
+    parseLogic.sortByAsc();
+    return parseLogic.get();
+}
+</script>

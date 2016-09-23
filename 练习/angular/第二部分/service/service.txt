@@ -1,0 +1,6 @@
+使用￥http服务
+创建自己的service
+service的特性
+service，factory，provide本质上都是provider
+使用$filter服务
+其他内置的service介绍

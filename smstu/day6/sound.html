@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width ,user-scable=no">
+<title>录音动能</title>
+<style>
+    html,body {
+        height:100%;
+    }
+    body {
+        padding:0;
+        margin:0;
+       
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    button {
+        padding:20px;
+    }
+</style>
+</head>
+
+<body ontouchstrat="">
+<button>录音</button>
+<script src="js/js-sdk.js"></script>
+<script>
++function(){
+    
+    var elem=document.querySelector('button');
+    var record=false;
+    
+    //播放录音
+    function playRecording(data){
+        var audio=document.createElement('audio');
+        audio.src=data;
+        audio.controls=true;
+        document.body.appendChild(audio);
+    }
+    wx.config({
+        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '',// 必填，公众号的唯一标识
+        timestamp: 111, // 必填，生成签名的时间戳
+        nonceStr: '', // 必填，生成签名的随机串
+        signature: '',// 必填，签名，见附录1
+        jsApiList: [] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+    
+    wx.ready(function(){
+        alert('验证成功');
+    });
+    
+    wx.error(function(res){
+        alert('验证失败');
+    });
+    
+    elem.addEventListener('touchstart',function(event){
+        document.title='正在录音';
+        wx.startRecord();
+    });
+    
+    elem.addEventListener('touchend',function(event){
+        document.title='停止录音';
+        wx.stopRecord({
+            success: function (res) {
+            var localId = res.localId;
+            wx.playVoice({
+                localId: localId // 需要播放的音频的本地ID，由stopRecord接口获得
+            });
+        }
+    });
+});
+}();
+</script>
+</body>
+</html>

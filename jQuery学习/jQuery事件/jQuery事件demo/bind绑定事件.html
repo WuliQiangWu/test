@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <h5 class="header">什么是jQuery</h5>
+        <div class="content" style="display: none"> 洛杉矶发牢骚的减肥了圣诞节覅我兼容我们，十来块钱金佛我饿了我文件如今可接受的女撒娇佛尔我就去积分卡设计费死飞机群殴文件 </div>
+    </div>
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <Script>
+//        $(function(){
+//            $('h5').bind('click',function(){
+//                $(this).next().show();
+//            })
+//        })
+//        加强效果
+//        $(function(){
+//            $('h5').bind('click',function(){
+//                if($(this).next().is(':visible')){
+//                    $(this).next().hide();
+//                }
+//                else{
+//                    $(this).next().show();
+//                }
+//            })
+//        })
+//        改变绑定类型
+//        $(function(){
+//            $('h5')
+//                .bind('mouseover',function(){
+//                    $(this).next().show();})
+//                .bind('mouseout',function(){
+//                    $(this).next().hide();})
+//        })
+        //简写绑定事件
+        $(function(){
+            $('h5').mouseover(function(){
+                $(this).next().show()
+            }).mouseout(function(){
+                $(this).next().hide()})
+        })
+    </Script>
+</body>
+</html>

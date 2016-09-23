@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>下拉列表</title>
+	<style type="text/css">
+		*{margin:0; padding:0; list-style: none;}
+		.wrapper{
+			height:50px;
+			width:1000px;
+			margin:0 auto;
+		}
+		#shuxing{
+			float:left;
+			line-height: 30px;
+			width:125px;
+			text-align: center;
+			height:30px;
+			display: inline-block;
+		}
+		#all{
+
+			cursor:pointer;
+			float:left;
+			width:263px;
+			margin:10px 10px;
+		}
+		.select{
+			float:left;
+			width:126px; height:30px;
+			box-sizing: border-box;
+			line-height: 30px;
+			position:relative;
+			background: #fff;
+		}
+		.border{
+			border:1px solid #ccc;
+		}
+		.select p,.select1 p,.select2 p,.select3 p{
+			height:30px; padding-left:57px;
+			line-height: 30px; font-size:12px;
+			color:#000; display:inline-block;
+		}
+		.icon,.icon1,.icon2,.icon3{
+			display: inline-block;
+			width:12px; height:7px;
+			float:right; 
+			margin-top:12px; margin-right:11px;
+			background-image: url(img/Shape-2-copy-8@2x.png);
+		}
+		.iconchange{
+			background-image: url(img/Shape-2-copy-4@2x.png);
+		}
+		.list{
+			position:absolute;
+			width:126px; height:auto;
+			box-sizing: border-box;
+			padding:6px; background: #28626b;
+			left:0; top:30px;
+			display:none;
+		}
+		.list li,.list1 li,.list2 li,.list3 li{
+			cursor:pointer;
+			height:27px;
+			box-sizing: border-box;
+			border-bottom:1px solid #235a62;
+			border-top:1px solid #fff;
+			font-size:12px; color:#fff;
+			line-height: 25px; text-align: center;;
+		}
+		.list li.first,.list1 li.first,.list2 li.first,.list3 li.first{
+			/*border-top:none;*/
+		}
+		.list li.last,.list1 li.last,.list2 li.last,.list3 li.last{
+			border-bottom:none;
+		}
+		button{
+			float:left;
+			margin:10px 10px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left:40px;
+            border:none;
+            outline: none;
+            height:30px;
+            width:100px;
+            background-color: #ff7e00;
+            background-image: url(img/search.png);
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            color: #ffffff;
+            cursor: pointer;
+        }
+		 table tr:nth-child(1){
+            color: #ffffff;
+        }
+		table{
+            margin: 150px auto 0 auto ;
+			display: block;
+			border-collapse: collapse;
+        }
+		table tr{
+			text-align: center;
+		}
+		b{
+			display: inline-block;
+			margin:0;
+			padding:0;
+			float: left;
+			height:100%;
+			margin-left:3px;
+			line-height: 30px;
+		}
+
+	</style>
+</head>
+<body>
+	
+<div class='wrapper'>
+
+	<div id="all">
+		<span id="shuxing">性别</span>
+		<div class="select border">
+		<p></p>
+		<span class="icon"></span>
+		<ul class="list">
+			<li class="first">23</li>
+			<li>24</li>
+			<li>56</li>
+			<li class="first">23</li>
+			<li>24</li>
+			<li>56</li>
+			<li class="first">23</li>
+			<li>24</li>
+			<li>56</li>
+			<li class="first">23</li>
+			<li>24</li>
+			<li>56</li>
+			<li class="last">34</li>
+		</ul>
+	</div>
+	</div>
+</div>
+	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+	<script type="text/javascript">
+		function selectDown(select,icon,list){
+			function changeUp(){
+				$(list).slideUp();
+				$(icon).removeClass('iconchange');
+				$(select).css({backgroundColor:'#fff'});
+				$(select).addClass('border');
+				tf=false;
+			}
+			var tf=false;
+			$(select).on('click',function(){
+				tf=!tf;
+				if(tf){
+					this.style.backgroundColor='#28626b';
+					$(list).slideDown();
+					$(icon).addClass('iconchange');
+					$(this).removeClass('border');
+				}else{
+					this.style.backgroundColor='#fff';
+					$(list).slideUp();
+					$(icon).removeClass('iconchange');
+					$(this).addClass('border');
+				}
+				
+			});
+			var aLi=$(list).children();
+			aLi.on('click',function(ev){
+				var index=$(this).index();
+				console.log(index);
+				var val=aLi.eq(index).html();
+				$(select).children('p').html(val);
+				changeUp();
+				return false;
+			})
+		}
+		selectDown('.select','.icon','.list');
+
+
+//		$(document).ready(function(){
+//			$("#_table tr:even td").css("background","#edf5f6");
+//
+//			$("#_table tr:even td").attr("bg","#edf5f6");
+//			$("#_table tr:odd td").attr("bg","#fff");
+//			//(把背景色保存到属性中)
+//			$("#_table tr").mouseover(function(){
+//				$(this).css("background","#85cfda");
+//			})
+//			$("#_table tr td").mouseout(function(){
+//				var bgc = $(this).attr("bg");
+//				$(this).css("background",bgc);
+//			})
+//
+//		})
+//
+
+
+	</script>
+</body>
+</html>

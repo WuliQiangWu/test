@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
+		<Style>
+		    html, body {
+		        position: relative;
+		        height: 100%;
+		    }
+		    body {
+		        background: #eee;
+		        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+		        font-size: 14px;
+		        color:#000;
+		        margin: 0;
+		        padding: 0;
+		    }
+		    .swiper-container {
+		    	position: relative;
+		        width: 100%;
+		        height: 100%;
+		        z-index: 5;
+		    }
+		    .swiper-slide {		        
+		        background: #ccc;		 
+		        display: -webkit-box;
+		        display: -ms-flexbox;
+		        display: -webkit-flex;
+		        display: flex;
+		        -webkit-box-pack: center;
+		        -ms-flex-pack: center;
+		        -webkit-justify-content: center;
+		        justify-content: center;
+		        -webkit-box-align: center;
+		        -ms-flex-align: center;
+		        -webkit-align-items: center;
+		        align-items: center;
+		    }
+		    #autoplay{
+		    	width: 30px;
+		    	height: 30px;
+		    	position: absolute;
+		    	z-index: 10;
+		    	top: 15px;
+		    	right: 15px;
+		    }
+		    @-webkit-keyframes autoPlay{
+		    	0%{transform: rotate(0deg);}
+		    	50%{transform: rotate(180deg);}
+		    	100%{transform: rotate(360deg);}
+		    }
+		    .autoplay{
+		    	animation: autoPlay 2s linear infinite;
+		    	-webkit-animation: autoPlay 2s linear infinite;
+		    }
+		</Style>
+	</head>
+	<body>
+		<div class="swiper-container">
+			<div id="autoplay" >
+				<img src="img/01.PNG" />
+			</div>
+			
+	        <div class="swiper-wrapper">
+	            <div class="swiper-slide">
+	            	
+	            </div>
+	            <div class="swiper-slide">Slide 2</div>
+	            <div class="swiper-slide">Slide 3</div>
+	            <div class="swiper-slide">Slide 4</div>
+	            <div class="swiper-slide">Slide 5</div>
+	            <div class="swiper-slide">Slide 6</div>
+	            <div class="swiper-slide">Slide 7</div>
+	            <div class="swiper-slide">Slide 8</div>
+	            <div class="swiper-slide">Slide 9</div>
+	            <div class="swiper-slide">Slide 10</div>
+	        </div>
+    </div>
+	<script type="text/javascript" src="js/zepto.min.js" ></script>
+    <script type="text/javascript" src="js/index.js" ></script>
+    <script src="js/swiper.min.js"></script>
+    <script>
+	    var swiper = new Swiper('.swiper-container', {
+	        pagination: '.swiper-pagination',
+	        paginationClickable: true,
+	        direction: 'vertical'
+	    });
+    </script>
+	</body>
+</html>

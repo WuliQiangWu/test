@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+</head>
+<body>
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script>
+        $(function(){
+            timestamp=0;
+            updateMes();
+            $('#chartform').submit(function(){
+                $.post('backup.php',{
+                    message:$('#msg').val(),
+                    name:$('#author').val(),
+                    action:"postmsg",
+                    time:timestamp
+                },function(xml){
+                    $('#msg').val('');
+                    addMessage(xml);
+                });
+                return false;
+            });
+            function addMessage(xml){
+                if($('status',xml).text()=='2'){
+                    return;
+                }
+                timestamp=$('time',xml).text();
+                $('message',xml).each(function(){
+                    var author=$('author',this).text();
+                    var content=$('text',this).text();
+                    var htmlcode="<strong>"+author+"</strong>:"+content+"<br/>";
+                    $('#messagewindow').prepend(htmlcode);
+                })
+            }
+            function updateMes(){
+                $.post('backup.php',{time:timestamp},function(xml){
+                    $('#loading').remove();
+                    addMessage(xml)
+                });
+                setTimeout('updateMes()',4000)
+        }
+        })
+    </script>
+
+    <div id="wrapper">
+        <p id="messagewindow"><span id="loading">加载中</span></p>
+        <form id="chatform">
+           <label>姓名:<input type="text" id="auther" size="50"/></label>
+           <label>内容:<input type="text" id="msg" size="50"/></label>
+            <input type="submit" value="发送"/>
+        </form>
+    </div>
+</body>
+</html>

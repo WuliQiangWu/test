@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+<title>码上推</title>
+<meta name="renderer" content="webkit">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="码上推">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<script type="application/javascript" src="js/fastclick.js"></script> 
+<script type="application/javascript">
+	function setFontSize(){
+        document.documentElement.style.fontSize=window.innerWidth/16+'px';
+    }
+    setFontSize();
+    window.addEventListener('resize',function(){
+        setFontSize();
+    });
+    window.addEventListener('load', function () {
+		FastClick.attach(document.body);
+	}, false);
+</script>
+<link rel="stylesheet" href="css/recruit-h5.css">
+</head>
+
+<body ontouchstart="" class="rc-register">
+    
+    <section class="rc-register-form">
+        <form class="glb-form">
+            <section class="glb-warn glb-form-cell">
+                <p class="glb-para-small-red">你输入的手机号有误</p>
+            </section>
+            <div class="glb-form-cell">
+                <div class="glb-form-cell-primary">
+                    <input type="tel" class="glb-form-input" placeholder="请输入手机号码" data-blz-type="phone">
+                </div>
+                <span class="glb-icon-warn"></span>  
+            </div>
+            <div class="glb-form-cell">
+                <div class="glb-form-cell-primary">
+                    <input type="number" pattern="[0-9]*" class="glb-form-input" placeholder="请输入验证码" data-blz-type="check" data-blz-pattern="1234">
+                </div>
+                <div class="glb-form-cell-primary">
+                    <input type="button" id="glb-form-send" class="glb-form-send" value="发送验证码">
+                </div>
+                <span class="glb-icon-warn"></span> 
+            </div>
+            <div class="glb-form-cell glb-btn-area">
+                <div class="glb-form-cell-primary">
+                    <input type="submit" class="glb-btn glb-btn-primary" value="下一步">
+                </div>
+            </div>
+        </form>
+    </section>
+    
+    <section class="rc-logo">
+        <span class="glb-for-screen">北京万朵玫瑰电子商务有限公司</span>
+    </section>
+</body>
+<script type="application/javascript" src="js/jquery-3.1.0.js"></script>
+<script type="application/javascript" src="js/mobile-model.js"></script>
+<script type="application/javascript">
+    +function($){
+        $('form').check({
+	        getVerificationCode:function($elem){
+                
+            }
+	    });
+    }(window.jQuery);
+</script>
+</html>

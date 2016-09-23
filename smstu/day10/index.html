@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<title></title>
+		<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+			header{
+				
+				width: 100%;
+				height: 200px;
+				background: #f60;
+				
+			}
+			.radio{
+				width: 200px;
+				height: 100px;
+				margin: -40px auto 0 auto;
+				border-radius: 50%;
+				background: #ffffff;
+				text-align: center;
+				line-height: 50px;
+			}
+			.yuyin{
+				
+			}
+		</style>
+	</head>
+	
+	<body>
+		
+			<header>
+				
+			</header>
+			<div class="radio">
+				语音祝福
+			</div>
+			
+			<section class="yuyin">
+				<div class="bofang">
+					<button></button>
+				</div>
+				<span>语音祝福</span>
+				<button class="luyin">
+					按住说话
+				</button>
+			</section>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<script type="text/javascript" src="js/zepto.min.js" ></script>
+			<Script>
+				$(".luyin").on("touchstart", function(e) {
+				    e.preventDefault();
+				    startX = e.originalEvent.changedTouches[0].pageX,
+				    startY = e.originalEvent.changedTouches[0].pageY;
+				});
+				$(".luyin").on("touchmove", function(e) {
+				    e.preventDefault();
+				    moveEndX = e.originalEvent.changedTouches[0].pageX,
+				    moveEndY = e.originalEvent.changedTouches[0].pageY,
+				    X = moveEndX - startX,
+				    Y = moveEndY - startY;
+				     
+				    if ( Math.abs(X) > Math.abs(Y) && X > 0 ) {
+				        alert("left 2 right");
+				    }
+				    else if ( Math.abs(X) > Math.abs(Y) && X < 0 ) {
+				        alert("right 2 left");
+				    }
+				    else if ( Math.abs(Y) > Math.abs(X) && Y > 0) {
+				        alert("top 2 bottom");
+				    }
+				    else if ( Math.abs(Y) > Math.abs(X) && Y < 0 ) {
+				        alert("bottom 2 top");
+				    }
+				    else{
+				        alert("just touch");
+				    }
+				});
+			</Script>
+	</body>
+</html>

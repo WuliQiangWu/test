@@ -1,0 +1,20 @@
+1.代码编辑工具        WebStrom
+2.断点调试工具        Chrom插件Batarang
+3.版本管理工具        Git
+4.代码合并混淆工具     NodeJS Grunt  http-server(数据的测试)
+5.依赖管理工具        Bower
+6.单元测试工具        Karma 和 Karma-Jasmine
+7.集成测试工具        Protractor(angular专用的)
+
+
+        1.grunt-contrib-uglify(混淆)
+grunt   2.grunt-contrib-concate(合并)
+        3.grunt-contrib-watch(监控文件变化)
+
+
+Jasmine 思想就是 分组，用例，期望，分配。分别对应一种函数
+
+describe(string,function) 表示分组。 一组测试用例
+it(string,function) 这个函数表示测试用例
+expect(expression) 表示期望expression这个表达式具有某个值或某种行为
+to(arg) 表示匹配

@@ -1,0 +1,19 @@
+.wei1{
+	border: border-box;
+}
+.weui_cell .weui_cell_primary p{
+	text-align: justify;
+	-webkit-margin-after: 0;
+}
+.weui_cell_ft input{
+	height: 100%;
+	line-height: 100%;
+	border: none;
+} 
+.weui_cell:before{
+	left: 0;
+}
+.weui_cell_ft{
+	margin-left: 0;
+	
+}

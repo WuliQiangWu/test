@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+		<script>
+			window.onload=function(){
+				var canvas = document.getElementById('canvas');
+				canvas.width=800;
+				canvas.height=500;
+				var context = canvas.getContext('2d');
+			//canvas画直线
+				context.beginPath();
+				context.moveTo(100,100);
+				context.lineTo(700,700);
+				context.strokeStyle="#10AEFF";
+				context.strokeWidth=2;
+				context.fillStyle="#039702";
+				context.fill();
+				context.stroke();
+			
+				content.arc(300,300,200,0.5*Math.PI,true)
+			}
+			
+		</script>
+	</body>
+</html>

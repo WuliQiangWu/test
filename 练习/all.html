@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html style="font-size: 100px">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script>
+        function setFontSize(){
+            document.documentElement.style.fontSize=window.innerWidth*100/320+'px';
+        }
+        setFontSize();
+        window.addEventListener('resize',setFontSize,false);
+    </script>
+    <title>Title</title>
+    <Style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #wrap{
+            width:3.2rem;
+            height:6rem;
+            background:
+                    url(iamges/confirmation-bg-top.png) no-repeat 0 top,
+                    url(iamges/confirmation-bg-bottom.png) no-repeat 0 bottom,
+                    url(iamges/confirmation-bg-center.png) repeat-y 0 0.65rem;
+
+            background-size: contain;
+        }
+    </Style>
+
+</head>
+
+<body>
+    <div id="wrap">
+
+    </div>
+
+</body>
+</html>
+
+

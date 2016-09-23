@@ -1,0 +1,75 @@
+jQuery中的动画
+
+1.show()和hide()方法
+在文档中调用hide()方法会将元素的display样式改为'none'，与css()方法设置display属性效果一样
+show()方法将元素的display样式设置为先前的显示状态('block'或者'inline'或其他除了'none'之外的值)
+hide()方法在将内容的display设置为none之前会先记住原来的display属性值，调用show()方法时，会根据hide()方法记住的display属性值来显示元素。
+
+1.2show方法和hide方法让元素动起来
+show()方法和hide()方法在不带任何参数的情况下，相当于css()方法设置display属性效果，作用是立即显示或者隐藏，不会有任何动画，如果希望在调用show方法的时，元素慢慢的显示出来，可以为show方法指定一个速度参数，例如指定一个速度关键字slow,fast,normal(长度分别是600毫秒，400毫秒，200毫秒)。还可以直接写数字，例如1000（表示在一秒钟内显示出来）。
+
+1.3fadeIn()和fadeOut()
+与hide和show方法不同的是，fadeIn方法和fadeOut方法只会改变元素的不透明度。fadeOut方法会在指定的时间内降低元素的不透明度，直到元素完全消失(display:none),fadeOut则相反。
+
+2.slideUp()和slideDown()
+slideUp()和slideDown()只会改变元素的高度。如果一个元素的display属性值为none，当调用slideDown()方法时，这个元素将由上至下延伸显示，slideUp()方法正好相反，元素由下向上缩短显示。
+
+3.自定义动画方法animate()
+animate()方法自定义动画。语法结构为animate(params,speed,callback).
+参数说明：
+params：一个包含样式属性及值的映射，比如{property:'value1',property:'value2',property:'value3'};
+speed:速度参数，可选；
+callback:在动画完成时执行的函数，可选。
+
+3.1累加，累减动画
+如果在animate的属性映射中设置例如{left:'500px'}作为动画参数，如果在500px之前加上'+='或者'-='，符号即表示在当前位置累加或者累减。
+
+3.2多重动画
+如果要需要执行多重的动画，可以在params上继续增加属性和属性值就可以在单位时间里面实现多重动画。
+
+3.2.1 按顺序执行多重动画
+写在一个{property:'value1',property:'value2'}之内的属性会同时改变。如果要按照顺序执行的话，只需要拆开来写就可以。
+如:
+$(this).animate({property:'value1'},speed,callback);
+$(this).animate({property:'value2'},speed,callback);
+因为jQuery是链式操作；因此也可以写成如下格式：
+$(this).animate({property:'value1'},speed,callback)
+       .animate({property:'value2'},speed,callback);
+
+3.3综合动画
+为同一个元素应用多重效果时，可通过链式的方式对这些效果进行排队。
+
+3.4 动画的回调函数
+callback方法适用于所有的jQuery的动画效果，例如slideDown()方法的回调函数；
+css方法不会被插入到队列中，如果需要改变元素的css样式，可以写在回调函数中。
+
+3.5停止动画和判断是否处于动画状态
+需要停止匹配元素正在进行的动画，需要使用stop方法。stop方法的语法结构是：
+stop([clearQueue],[gotoEnd])
+clearQueue和gotoEnd都是可选参数，为Boolean值(true或者false).clearQueue表示是否要清空未执行的动画队列，gotoEnd表示是否直接将正在执行的动画跳转到末状态。
+直接使用stop()方法，会立即停止当前正在进行的动画，如果接下来还有动画等待继续，则以当前的状态开始接下来的动画。
+
+可能会发生这种情况的例子：
+为一个元素绑定hover事件之后，把光标移入元素时会触发动画效果，但是这个动画没有结束的时候，就把光标移出这个元素了，那么光标移入的动画效果将会被放进队列，等待光标移入的动画执行完之后再执行，因此光标移入移出的过快就会导致动画效果与光标不一致。解决方法，在移入移出之前加上stop()方法就可以了。它可以立即结束当前正在进行的动画，并且执行队列中的下一个动画。
+
+当遇到组合动画时，stop()只会停止当前第一阶段的动画，但是后续的动画会继续进行，但是需要的是直接跳过这个后续的动画执行下一步，这个时候需要stop()的第一个参数clearQueue设置为true，表示直接停止此阶段的动画，尚未执行的动画将被清空。第二个参数可以让当前正在进行的动画直接到达末状态的情况。可以通过stop(false,true)这种方式来让当前动画直接到达末状态。也可以使用stop(true,true)这种方式来停止当前动画并直接到达末状态。
+jQuery只能设置正在执行的动画的最终状态，没有提供可以直接到达未执行动画队列最终状态的方法。
+
+3.5.1判断元素是否处于运动状态
+if(!$('element').is(':animated')){ //判断元素是否处于动画状态
+    如果当前没有进行新动画，则添加新动画。
+}
+3.5.2 延迟动画
+动画执行过程中，如果想对动画进行延迟操作，那么可以使用delay()方法.它允许我们将队列中的函数延迟执行，既可以推迟动画队列中的函数执行，也可以用于自定义队列。
+
+4.其他动画方法
+·toggle(speed,[callback])
+·slideToggle(speed,[easing],[callback])
+·fadeTo(speed,opacity,[callback])
+·fadeToggle(speed,[easing],[callback])
+
+4.1  toggle()方法可以切换元素的可见性，如果元素可见，则切换为隐藏，如果元素时隐藏的，则切换为可见。
+4.2  slideToggle()方法是通过高度变化来切换匹配元素的可见性。这个动画效果值调整元素的高度。
+4.3  fadeTo()方法可以吧元素的不透明度以渐变的方式调整到指定的位置。这个动画只调整元素的不透明度，即匹配元素的高度和宽度是不变的。
+4.4  fadeToggle()方法是通过透明度变化来切换匹配元素的可见性。这个动画效果值调整元素的不透明度。
+

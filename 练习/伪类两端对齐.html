@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>文本两端对齐 by hongchenok</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .oDiv{
+            width:500px;
+            height:auto;
+
+        }
+        p{
+            overflow: hidden;
+        }
+        .oDiv p span i{
+            font-style: inherit;
+            display: block;
+        }
+        .l{
+            width:130px;
+            float: left;
+            text-align: justify;
+        }
+        .l:after{
+            content: '';
+            display: inline-block;
+            height:0;
+            width:100%;
+        }
+        .r{
+            float: left;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="oDiv">
+        <p><span class="l"><i>用&nbsp;户&nbsp;的</i>身&nbsp;份&nbsp;证&nbsp;号&nbsp;码：</span><span class="r">412121212112121212</span></p>
+        <p><span class="l">投&nbsp;保&nbsp;用&nbsp;户：</span><span class="r">李某某</span></p>
+        <p><span class="l">投&nbsp;保&nbsp;用&nbsp;户&nbsp;名：</span><span class="r">李某某</span></p>
+    </div>
+</body>
+</html>

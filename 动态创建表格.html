@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        td{
+            width:50px;
+            height:30px;
+            border:1px solid pink;
+        }
+        input{
+            width:50px;
+            height:40px;
+            border:1px solid #000;
+            background:#fff
+        }
+
+    </style>
+</head>
+<body>
+行数：<input type="text" value="" id="txt"  />
+列数：<input type="text" value="" id="txt1"  />
+<input type="button" value="生成" id="btn" />
+<script>
+    var oTxt=document.getElementById("txt");
+    var oTxt1=document.getElementById("txt1");
+    var oBtn=document.getElementById("btn");
+    var tb=document.createElement("table");
+    var arrColor=["yelloW","red","blue","pink"]
+    oBtn.onclick=function(){
+        var h=oTxt.value;
+        var l=oTxt1.value;;
+        for(k=0;k<oTxt1.value;k++){
+            var tr=document.createElement("tr");
+//              每行颜色是相同
+//            tr.style.background=arrColor[k];
+
+            for(var i=0;i<oTxt.value;i++){
+                var shan=document.createElement("input");
+                shan.value="删除";
+                /*shan.id="btn";*/
+                shan.type="button";
+                shan.onclick=function(){
+                    tb.removeChild(this.parentNode)//删除当前节点的父节点，
+                }
+
+                var td=document.createElement("td");
+
+//                随机颜色
+//                var index=parseInt(Math.random()*4);
+//                td.style.background=arrColor[index];
+
+//                每列颜色相同
+//                td.style.background=arrColor[i];
+
+
+                tr.appendChild(td);
+            }
+
+            tb.appendChild(tr);
+
+            tr.appendChild(shan)
+        }
+
+
+        document.body.appendChild(tb)
+    }
+    /*var oBtn=document.getElementById("btn");*/
+
+
+
+</script>
+</body>
+</html>
