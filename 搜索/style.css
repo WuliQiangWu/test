@@ -1,0 +1,47 @@
+input, button, body, ul, li, div {
+    padding: 0;
+    margin: 0;
+}
+
+ul, li {
+    list-style: none
+}
+
+#con {
+    margin: 100px auto 0;
+    overflow: hidden;
+    width: 375px;
+    height: 42px
+}
+
+.l {
+    float: left;
+}
+
+#text {
+    width: 300px;
+    height: 38px;
+    line-height: 38px;
+    margin-right: 10px;
+}
+
+#btn {
+    width: 60px;
+    height: 42px;
+    line-height: 38px;
+    text-align: center;
+    font-size: 15px;
+}
+
+#con1 {
+    margin:0 auto ;
+    width: 296px;
+    padding: 0 3px;
+    border: 1px solid #CCCCCC;
+    display: none
+}
+
+#list {
+    border-bottom: 1px dashed #ccc;
+    height:38px;
+}
