@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/blue.css" id="style"/>
+    <style>
+        button{
+            background: red;
+            color:#000000;
+            text-align: center;
+            height:30px;
+            width:100px;
+            line-height: 30px;
+            border:none;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <button class="blue">蓝色</button>
+    <button class="green">绿色</button>
+    <button class="black">黑色</button>
+    <script>
+        var oBtn=document.getElementsByTagName('button');
+        var oStyle=document.getElementById('style');
+        for(var i=0;i<oBtn.length;i++){
+            oBtn[i].index=i;
+            oBtn[i].onclick=function(){
+                oStyle.href='css/'+this.className+'.css'
+            }
+        }
+    </script>
+</body>
+</html>

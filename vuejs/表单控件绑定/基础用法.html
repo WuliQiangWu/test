@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="example">
+<!--#text-->
+<span>Message is:{{message}}</span></br>
+<input type="text" v-model="message" placeholder="edit me"/>
+
+<!--Multiline text-->
+<span>Multiline Message is:</span>
+<p>{{message}}</p>
+<br/>
+<textarea v-module="message" placeholder="add multiple lines"></textarea>
+
+<!--checkBox-->
+<!--单个勾选框，逻辑值：-->
+<input type="checkbox" id="checkbox" v-model="checked">
+<label for="checkbox">{{ checked }}</label>
+<!--多个勾选框，绑定到同一个数组：-->
+<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+<label for="jack">Jack</label>
+<input type="checkbox" id="john" value="John" v-model="checkedNames">
+<label for="john">John</label>
+<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+<label for="mike">Mike</label>
+<br/>
+<span>Check names:{{checkedNames| json}}</span>
+
+<!--radio-->
+<input type="radio" id="one" value="One" v-model="picked">
+<label for="one">One</label>
+<br>
+<input type="radio" id="two" value="Two" v-model="picked">
+<label for="two">Two</label>
+<br>
+<span>Picked: {{ picked }}</span>
+
+<!--select-->
+<!--单选-->
+<select v-model="selected">
+    <option selected>A</option>
+    <option>B</option>
+    <option>C</option>
+</select>
+<span>Selected:{{selected}}</span>
+<!--多选-->
+<select v-model="selected" multiple>
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+</select>
+<span>Selected:{{selected | json}}</span>
+<!--动态选项，用v-for渲染-->
+<select v-model="selected">
+    <option v-for="option in options" v-bind:value="option.value">{{option.text}}</option>
+</select>
+<span>Selected:{{selected}}</span>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#example',
+        data:{
+            checkedNames:[],
+            selected:'A',
+            options:[
+                {text:'one',value:'A'},
+                {text:'one',value:'A'},
+                {text:'one',value:'A'}
+            ]
+        }
+    })
+</script>
+</body>
+</html>

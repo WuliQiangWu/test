@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="example1">
+    <ul >
+        <li v-for="item in items">
+            {{item.message}}
+        </li>
+    </ul>
+    <ul>
+        <li v-for="item in items">
+            {{parentMessage}}-{{$key}}-{{$index}}-{{item.message}}
+            <!--$index表示当前数组元素的索引-->
+        </li>
+    </ul>
+
+
+    <template v-for="item in items">
+        <li>{{item.message}}</li>
+    </template>
+
+
+    <div v-for="(index,item) in items">
+        {{index}} {{item.message}}
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#example1',
+            data:{
+                parentMessage:'parent',
+                items:[
+                    {message:'foo'},
+                    {message:'bor'}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #show{
+            box-shadow: 0 0 20px aqua;width:600px;height:400px;margin:100px auto;position: relative;overflow: hidden;
+        }
+        img{
+            height:400px;width:600px;position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="show">
+    <img src="img/1.jpg" alt=""/>
+    <img src="img/2.jpg" alt=""/>
+    <img src="img/3.jpg" alt=""/>
+    <img src="img/4.jpg" alt=""/>
+</div>
+<script type="text/javascript">
+    var ImgList=document.getElementsByTagName("img");
+    for(var i=0;i<=3;i++){
+        ImgList[i].style.left=i*600+"px";
+        ImgList[i].style.top=0;
+    }
+
+    var timer;
+    timer=setInterval(function(){
+        for(var k=0;k<4;k++){
+            console.log(ImgList[k].offsetLeft);
+            ImgList[k].style.left=ImgList[k].offsetLeft-1+"px";
+
+            ImgList[k].style.top=ImgList[k].offsetTop+"px";
+            if(ImgList[k].offsetLeft==-600){
+                ImgList[k].style.left="1800px";
+            }
+
+        }
+    },2000)
+</script>
+
+</body>
+</html>

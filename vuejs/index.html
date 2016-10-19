@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .finished{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body id="app">
+    <h1 v-html="title"></h1>
+    <input v-model="newItem" v-on:keyup.enter="addNew">
+    <ul >
+        <li v-for="item in items" v-bind:class="{finished: item.isFinished}" v-on:click="do(item)" v-html="item.label">
+        </li>
+    </ul>
+    <script src="js/vue.js"></script>
+<Script>
+    var vue1 = new Vue({
+        el:'#app',
+        data:{
+            title:'this is app<span>!!</span>',
+            items:[]
+        },
+        methods:{
+            do:function(item){
+               item.isFinished=!item.isFinished
+            },
+            addNew:function(){
+                this.items.push({
+                    label:this.newItem,
+                    isFinished:false
+                });
+                this.newItem='';
+            }
+        }
+    });
+</Script>
+</body>
+</html>

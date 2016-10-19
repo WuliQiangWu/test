@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var deviceType={
+            android:false,
+            ios:false,
+            winPhone:false,
+            weixin:false,
+            win:false,
+            mac:false,
+            pc:false
+        };
+        //判断设备
+        var u=navigator.userAgent;
+        if(u.indexOf('Android')>-1|| u.indexOf('Linux')>-1){
+            deviceType.android=true;//安卓手机
+        }else if(u.indexOf('iPhone')>-1){
+            deviceType.ios=true;//苹果手机
+        }else if(u.indexOf('Window Phone')>-1){
+            deviceType.winphone=true;
+        }else if(u.indexOf('Win')>-1){
+            deviceType.win=true;
+            deviceType.pc=true;
+        }else if(u.match(/MicroMessenger/i) == "micromessenger"){
+            deviceType.weixin=true;
+        }else if(u.indexOf('Mac')>-1){
+            deviceType.mac=true;
+            deviceType.pc=true;
+        }
+        //识别手机类型
+        function phoneType(){
+            if(u.indexOf('Android')>-1|| u.indexOf('Linux')>-1){
+                return 'android';//安卓
+            }else if(u.indexOf('iPhone')>-1){
+                return 'ios';//苹果
+            }else if(u.indexOf('Window Phone')>-1){
+                return 'winPhone';//winphone手机
+            }
+        }
+        function weixinShare(param){
+            getJSON('/token/jsweixin',{'url':location.href},function(response){
+                if (response.msg == 'ok') {
+                    var json = response.data.token;
+                    wx.config({
+                        debug: false,
+                        appId: json.appId,
+                        timestamp: json.timestamp,
+                        nonceStr: json.nonceStr,
+                        signature: json.signature,
+                        jsApiList: ["onMenuShareAppMessage", "onMenuShareTimeline", "onMenuShareQQ", "onMenuShareWeibo", "onMenuShareQZone"]
+                    });
+                    wx.ready(function () {
+                        for (var i = 0; i < param.length; i++) switch (param.shareType[i]) {
+                            case 0:
+                                //分享给朋友
+                                wx.onMenuShareAppMessage({
+                                    title: parm.title,
+                                    desc: parm.desc,
+                                    link: parm.link,
+                                    imgUrl: parm.imgUrl,
+                                    type: "",
+                                    dataUrl: "",
+                                    success: function () {
+                                        parm.success && parm.success()
+                                    },
+                                    cancel: function () {
+                                        parm.cancel && parm.cancel()
+                                    }
+                                });
+                                break;
+                            case 1:
+                                //分享到朋友圈
+                                wx.onMenuShareTimeline({
+                                    title: parm.title,
+                                    link: parm.link,
+                                    imgUrl: parm.imgUrl,
+                                    success: function () {
+                                        parm.success && parm.success()
+                                    },
+                                    cancel: function () {
+                                        parm.cancel && parm.cancel()
+                                    }
+                                });
+                                break;
+                            case 2:
+                                //分享到QQ
+                                wx.onMenuShareQQ({
+                                    title: parm.title,
+                                    desc: parm.desc,
+                                    link: parm.link,
+                                    imgUrl: parm.imgUrl,
+                                    success: function () {
+                                        parm.success && parm.success()
+                                    },
+                                    cancel: function () {
+                                        parm.cancel && parm.cancel()
+                                    }
+                                });
+                                break;
+                            case 3:
+                                //分享到腾讯微博
+                                wx.onMenuShareWeibo({
+                                    title: parm.title,
+                                    desc: parm.desc,
+                                    link: parm.link,
+                                    imgUrl: parm.imgUrl,
+                                    success: function () {
+                                        parm.success && parm.success()
+                                    },
+                                    cancel: function () {
+                                        parm.cancel && parm.cancel()
+                                    }
+                                });
+                                break;
+                            case 4:
+                                //分享到QQ空间
+                                wx.onMenuShareQZone({
+                                    title: parm.title,
+                                    desc: parm.desc,
+                                    link: parm.link,
+                                    imgUrl: parm.imgUrl,
+                                    success: function () {
+                                        parm.success && parm.success()
+                                    },
+                                    cancel: function () {
+                                        parm.cancel && parm.cancel()
+                                    }
+                                });
+                                break;
+                        }
+                    })
+                }
+
+            })
+        }
+    </script>
+</body>
+</html>

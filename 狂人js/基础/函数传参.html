@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        (function(){
+            //参数传递的随意性
+//            function add(x,y,z){
+//                this.x=x||0;
+//                this.y=y||0;
+//                this.z=z||0;
+//                alert(this.x+this.y+this.z)
+//            }
+//            add(1,2,3)
+            //弊端 无法像java等高级语言那样有精确函数复写的特性
+            //技巧 如果你这个类是工具类的情况下，那么你接收的参数最好是对象
+
+
+//            conf={gridName:'',gridCode:'',gridSize:''}
+            function gridUtil(conf){
+                alert(conf['gridName']+''+conf['gridSize']);
+            }
+            gridUtil({gridName:'youtube',gridSize:'100'});
+
+//            传值还是传址
+            var i=100;
+            var s='one';
+            function add3(i,s){
+                i++;
+                s+='--'
+            }
+            alert(i);
+            alert(s)
+            //证明  基础变量是传递数值的 自定义对象的传参方式是传的’地址‘
+            //
+            var o={name:'HAHAHHAH'};
+            function change(o){
+                o['name']='use.com'
+            }
+            alert(o.name)
+        })()
+    </script>
+</body>
+</html>

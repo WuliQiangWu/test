@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //信息的隐藏是最重的目的
+//        封装只不过是隐藏的一种方法
+        (function(){
+            //门户大开类型
+//            用命名规范区别私有和公有的方式
+//            闭包
+
+//            门户大开型
+            function Person(age,name){
+                this.name=name;
+                if(!this.checkAge(age)){
+                    throw  new Error('年龄不对啊')
+                }
+                this.age=age;
+            }
+
+//            解决上述问题
+            Person.prototype={
+                checkAge:function(age){
+                    if(age>0 && age<150){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+
+                }
+            };
+            Person.prototype['getName']=function(){
+                return this.name||'jim'
+            };
+            var p = new Person(27,'jim');
+            var p2 = new Person(27,'');
+            alert(p2.getName());
+//            读取规则的验证
+
+        })()
+
+        (function(){
+//            用命名规范来区别私有和公有变量
+            function Person(name,age,email){
+                //定义私有变量
+                this._name;
+                this._age;
+                this.setName(name);
+                this.setAge(age);
+                this._email=email;
+            }
+            Person.prototype={
+                setName:function(){
+                    this._name=name;
+                },
+                setAge:function(){
+                    if(age>0 && age<150){
+                        this._age=age;
+                    }
+                    else{
+                        throw new Error('年龄不对啊')
+                    }
+                }
+            };
+            var p=new Person('JIM',-1,'jim@qq.com')
+        })()
+
+        ///闭包实现封装
+        (function(){
+            function Person(name,age,email){
+                this.email=email;
+                this.getName=function(){
+                    return this.name;
+                };
+                this.getAge=function(){
+                    return this.age;
+                };
+                //set
+                this.setName=function(){
+                    this.name=name;
+                };
+                this.setAge=function(){
+                    if(age>0 && age<150){
+                        this._age=age;
+                    }
+                    else{
+                        throw new Error('年龄不对啊')
+                    }
+                };
+                this.init=function(){
+                    var name=this.setName(name);
+                    var age=this.setAge(age);
+                }
+                this.init();
+            }
+            var p = new  Person('JIM',-2,'jim.com')
+        })()
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="file" id="upLoader"/>
+    <div id="progress">
+        <div id="outPut" ></div>
+    </div>
+    <script>
+        var oFile = document.getElementById('upLoader');
+        oFile.addEventListener('change',function(){
+            var info='',
+                    oOutPut=document.getElementById('outPut'),
+                    progress=document.getElementById('progress'),
+                    files=event.target(event).files,
+                    type='default',
+                    reader = new FileReader();
+
+            if(/image/.test(files[0].type)){
+                reader.readAsDataURL(files[0]);
+                type='image';
+            }else{
+                reader.readerAsText(files[0]);
+                type='text'
+            }
+            reader.onerror=function(){
+                oOutPut.innerHTML='不能获取file'+reader.error.code;
+            };
+            reader.onprogress=function(event){
+                if(event.lengthComputable){
+                    progress.innerHTML=event.loaded+'/'+event.total;
+                }
+            };
+            reader.onload=function(){
+                var html='';
+                switch(type){
+                    case 'img':
+                        html='<img  src='+ reader.result+ '/>';
+                        break;
+                    case 'text':
+                        html=reader.result;
+                        break;
+                }
+                oOutPut.innerHtml=html;
+            }
+        },false)
+    </script>
+</body>
+</html>

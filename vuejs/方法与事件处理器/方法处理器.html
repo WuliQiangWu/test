@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="example">
+<!--v-on指令监听DOM事件-->
+    <button v-on:click="greet">Greet</button>
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#example',
+            data:{
+                name:'vue.js'
+            },
+            methods:{
+                greet:function(event){
+                    alert('hello '+this.name+' !');
+                    alert(event.target.tagName)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

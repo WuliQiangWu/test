@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--监听键盘事件时，我们经常要检测keyCode,vue.js允许为v-on添加按键修饰符-->
+    <input v-on:keyup.13="submit"/>
+
+<!--常用按键-->
+    <input v-on:keyup.enter="submit"/> //回车键
+    <input @keyup.enter="submit"/>
+
+·enter
+·tab
+·delete
+·esc
+·space
+·up
+·down
+·left
+·right
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width:200px;
+            height:150px;
+        }
+    </style>
+</head>
+<body>
+    <input  type="file" id="upload"/>
+    <img id="preview" src=""/>
+    <script>
+        var oUpload = document.getElementById('upload');
+        oUpload.addEventListener('change',function(){
+            var oFile = oUpload.files[0];
+            console.log(oFile);
+            var src=window.URL.createObjectURL(oFile);
+            var oImg1= document.getElementById('preview');
+            oImg1.src=src;
+        },false);
+
+
+        //这是在兼容浏览器
+        function getFullPath(obj){ //得到图片的完整路径
+            if(obj){
+        //  IE
+                if(window.navigator.userAgent.indexOf('MSIE')>=1){
+                    obj.select();
+                    return document.selection.createRange().text;
+                }
+        //  火狐
+                else if(window.navigator.userAgent.indexOf('Firefox')>=1){
+                    if(obj.files){
+//                        return obj.files.item(0).getAsDataURL();
+                        return window.URL.createObjectURL(obj.files[0])
+                    }
+                    return obj.value;
+                }
+                return obj.value;
+            }
+        }
+
+        //获取图片的完整路径 然后限制大小
+        oUpload.addEventListener('change',function(){
+            var oGetStr = oUpload.value;
+            var oImg = new Image();
+            oImg.src=getFullPath(oGetStr);
+
+            //验证图片上传格式是否正确
+            var pos = oGetStr.lastIndexOf('.');
+            var lastName = oGetStr.substring(pos,oGetStr.length);
+
+            if(lastName.toLowerCase()!='.jpg'){
+                throw new Error('你上传的文件类型为'+lastName+',必须为JPG格式!');
+                return false;
+            }
+            // 验证上传文件的宽高比例
+
+            if(oImg.height/oImg.width>1.5||oImg.height/oImg.width<1.25){
+                throw new Error('你上传的文件超出比例，宽高结余1.25-1.5之间!');
+                return false;
+            }
+            // 验证文件是否超出了大小
+            if(oImg.fileSize/1024>150){
+                throw new Error('你上传的文件大小超出了150K的限制!');
+                return false;
+            }
+
+            var oImg1= document.getElementById('preview');
+            oImg1.src=getFullPath(this);
+        },false)
+    </script>
+</body>
+</html>

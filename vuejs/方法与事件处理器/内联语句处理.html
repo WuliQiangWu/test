@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="example">
+    <button v-on:click="say('hi')">say hi</button>
+    <button v-on:click="say('what')">say what</button>
+    <button v-on:click="say('hello',$event)">submit</button>
+    <!--在内联语句处理器中访问原生DOM事件。可以用特殊变量$event把它传入方法。-->
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#example',
+            methods:{
+                say:function(msg,event){
+                    alert(msg);
+                    //可以访问原声事件对象
+                    event.preventDefault()
+                }
+            }
+        })
+    </script>
+</body>
+</html>

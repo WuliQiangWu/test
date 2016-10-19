@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <script>
+        //把字符串解析成方法调用
+        //数据库返回字符串，长得像数组
+
+        (function(){
+            var str='var show=function(){alert(100)}()';
+            eval(str);
+
+//            var a ='[1,2,3,4]'
+//            var array = eval(a);
+//            for(var i=0;i<array.length;i++){
+//                alert(array[i])
+//            }
+        })()
+
+    </script>
+
+</body>
+</html>

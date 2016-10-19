@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //继承
+        (function(){
+//            创建一个人员类
+            function Person(name){
+                this.name=name;
+            }
+//            创建一个教师类
+            function Teacher(name,books){
+//                call方法可以将一个函数的对象上下文从初始化变成由this来决定
+//                调用Person的构造函数，因为Person没有new，所以他是空对象
+                Person.call(this,name);
+                this.books=books;
+            }
+//            使老师类继承人员类
+            Teacher.prototype=new Person();
+            Teacher.prototype.constructor=Teacher;
+
+            Teacher.prototype.getBooks=function(){
+                alert(this.name+"  "+this.books)
+            };
+//            测试
+            var Jim = new Teacher('Jim','haodao');
+            Jim.getBooks();
+        })()
+
+    </script>
+</body>
+</html>

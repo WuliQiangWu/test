@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="app">
+
+    <child my-message="hello"></child>
+    <script src="js/vue.js"></script>
+    <script>
+//        HTML特性不区分大小写，驼峰式命名的prop用作特性时，需要转为在大写字母之前用短横线隔开的非驼峰式形式(短横线隔开)
+        Vue.component('child',{
+            props:['myMessage'],
+            template:"<span>{{myMessage}}</span>"
+        });
+        new Vue({
+            el:"#app"
+        })
+    </script>
+</body>
+</html>

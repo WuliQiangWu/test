@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>postMessage：跨域传输数据子页面</title>
+</head>
+<body>
+<div>
+    <p>接受来自:</p>
+    <h1 id="h1"></h1>
+    <p>的消息：</p>
+    <h1 id="p_text"></h1>
+</div>
+<script type="text/javascript">
+    // 窗口事件监听：监听message
+    window.addEventListener("message",function(e){
+        // e.origin:发送消息的地址，谁发的消息就是谁的
+        // 接收时候，可以加个判断;避免接收来源不明的URL发过来的数据
+        if( e.origin != "http://192.168.1.105" ){
+            return;
+        }
+        document.getElementById("h1").innerHTML = e.origin;
+        // e.data:发消息的内容
+        document.getElementById("p_text").innerHTML = e.data;
+        // 接收到消息后，在回过去，回个话；
+        // 通过访问message的source的属性，来获取消息发送源的窗口对象，
+        // 也就是能知道是谁发的消息，在通过postMessage，给发消息者回个话
+        e.source.postMessage("我是子页面的消息---呵呵哒",e.origin);
+    },false);
+</script>
+</body>
+</html>

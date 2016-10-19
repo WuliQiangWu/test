@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html style="font-size: 100px">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script type="text/javascript">
+        function setFontsize(){
+            document.documentElement.style.fontSize=window.innerWidth/320*100+'px'
+        }
+        setFontsize();
+        window.addEventListener('resize',setFontsize,false);
+    </script>
+    <title>sup</title>
+    <link rel="stylesheet" href="../css/wj-car.css" type="text/css"/>
+</head>
+<body>
+    <section class="wj-success">
+        <h1>
+            <img src="../images/succ_02.png"/>
+        </h1>
+        <div class="succ-tit">投保成功</div>
+        <div class="mess">
+            <p>
+                <span class="mess-left">车牌号码</span>
+                <span class="mess-right">京A12345</span>
+            </p>
+            <p>
+                <span class="mess-left">车型</span>
+                <span class="mess-right">上海大众帕萨特2014款尊荣版</span>
+            </p>
+            <p>
+                <span class="mess-left">行使城市</span>
+                <span class="mess-right">北京市</span>
+            </p>
+        </div>
+        <div class="succ-sub"><a href="javascript:">完成</a></div>
+
+    </section>
+</body>
+</html>

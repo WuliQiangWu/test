@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html style="font-size: 100px">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script type="text/javascript">
+        function setFontsize(){
+            document.documentElement.style.fontSize=window.innerWidth/320*100+'px'
+        }
+        setFontsize();
+        window.addEventListener('resize',setFontsize,false);
+    </script>
+    <title>sup</title>
+    <link rel="stylesheet" href="../css/wj-car.css" type="text/css"/>
+</head>
+<body>
+<section class="wj-message">
+    <p class="mes-tit">优先体验车险未来付</p>
+    <form>
+        <div class="sup-inp">
+            <p>
+                <label>
+                    <span>有无小孩</span>
+                    <select>
+                        <option selected="selected">选择有无小孩
+                        <option>有</option>
+                        <option>无</option>
+                    </select>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <span>实际驾龄</span>
+                    <select>
+                        <option selected="selected">选择实际驾龄</option>
+                    </select>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <span>车辆年平均里程</span>
+                    <input type="text" placeholder="填写车辆年平均里程"/>
+                </label>
+            </p>
+
+        </div>
+    </form>
+    <div class="sup-sub"><a href="javascript:">下一步</a></div>
+
+</section>
+</body>
+</html>

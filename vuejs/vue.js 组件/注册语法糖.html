@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script src="js/vue.js"></script>
+    <script>
+//        可以直接传入选项对象而不是构造器给 Vue.component() 和 component 选项。Vue.js 在背后自动调用 Vue.extend()：
+
+        //在一个步骤中扩展与注册
+        Vue.component('my-component',{
+            template:'<div>A custom component!</div>'
+        });
+        //局部注册也可以这么做
+        var Parent = Vue.extend({
+            component:{
+                'my-component':{
+                    template:'<div>A custom component </div>'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

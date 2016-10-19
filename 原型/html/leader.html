@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html style="font-size: 100px">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script type="text/javascript">
+        function setFontsize(){
+            document.documentElement.style.fontSize=window.innerWidth/320*100+'px'
+        }
+        setFontsize();
+        window.addEventListener('resize',setFontsize,false);
+    </script>
+    <title>leader</title>
+    <link rel="stylesheet" type="text/css" href="../css/wj-car.css"/>
+    <style>
+        .wj-checkbox {
+            position: absolute;
+            width: 0.16rem;
+            height: 0.16rem;
+            visibility: hidden;
+            z-index: 999;
+        }
+        .wj-checkbox+label {
+            position: absolute;
+            display: inline-block;
+            width: 0.16rem;
+            height: 0.16rem;
+            top:0.02rem;
+            left:0;
+            }
+        .wj-checkbox:checked+label {
+            background: url(../images/check.png) no-repeat 0 0;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <section class="wj-leader">
+            <div class="leader-tit">
+                <ul>
+                    <li><img src="../images/leader01.jpg"/></li>
+                    <li><img src="../images/leader02.jpg"/></li>
+                    <li><img src="../images/leader03.jpg"/></li>
+                </ul>
+                <div class="leader-form">
+                    <div class="leader-form-inp">
+                        <p>
+                            <label>
+                                <span>行使城市</span>
+                                <select  class="leader-icon">
+                                    <option>北京</option>
+                                </select>
+                            </label>
+
+                        </p>
+                        <p>
+                            <label>
+                                <span>车牌号码</span>
+                                <select>
+                                    <option>京</option>
+                                </select>
+                            </label>
+
+                        </p>
+                        <p class="border-none">
+                            <label>
+                                <span>保险公司</span>
+                                <select class="leader-icon">
+                                    <option>中国人寿财险</option>
+                                </select>
+                            </label>
+                        </p>
+                    </div>
+                    <div class="leader-form-che">
+                        <div id="checks">
+                            <input id="che" type="checkbox" name="checkbox" class="wj-checkbox"/>
+                            <label for="che"></label>
+                        </div>
+
+                            <span>我已阅读并同意《车辆信息查询授权》</span>
+                    </div>
+                    <div class="leader-form-sub"><a href="javascript:">获取报价</a></div>
+                </div>
+            </div>
+            <div class="leader-logo">
+
+            </div>
+        </section>
+    </form>
+    <Script>
+        window.onload=function(){
+            var oChecked= document.getElementById('che');
+            var oLabel = document.getElementById('checks').getElementsByTagName('label')[0];
+            console.log(oLabel);
+            oChecked.onclick=function(){
+                if(oChecked.checked){
+
+                }
+                else{
+
+                }
+            }
+
+        }
+
+
+    </Script>
+</body>
+</html>

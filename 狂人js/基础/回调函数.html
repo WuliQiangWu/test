@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <Script>
+        (function(){
+            //接收回调函数的函数
+            function add(x,y,fn){
+                this.x=x||1;
+                this.y=y||1;
+                if(fn){
+                    fn(this.x+this.y);
+                }
+            }
+            add(1,1,function(v){
+                if(v>0){
+                    return ('re'>0)
+                }
+                else{
+                    return('re'<=0)
+                }
+            })
+        })()
+    </Script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="example">
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.component('example',{
+            props:{
+                propA:Number,
+                propM:[String,Number],
+                propB:{
+                    type:'String',
+                    required:true
+                },
+                propC:{
+                    type:'Number',
+                    default:100
+                },
+                propD:{
+                    type:'Object',
+                    default:function(){
+                        return{msg:'hello'}
+                    }
+                },
+                propE:{
+                    twoWay:true
+                },
+                propF:{
+                    validator:function(value){
+                        return value>10
+                    }
+                },
+                propG:{
+                  coerce:function(val){
+                      return val+''
+                  }
+                },
+                propH:{
+                    coerce:function(){
+                        return JSON.parse(val)
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

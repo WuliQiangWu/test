@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="example">
+    <!--对于单选按钮，勾选框以及选择框，v-model绑定的value通常是静态的字符串（勾选框是逻辑值）-->
+    <!--当选中时，‘picked'为字符串’a‘-->
+    <input type="radio" v-model="picked" value="a"/>
+    <!--toggle为true或false-->
+    <input type="checkbox" v-model="toggle"/>
+    <!--选中时，selected为字符串’abc‘-->
+    <select v-model="selected">
+        <option value="abc">ABC</option>
+    </select>
+
+    <!--checkbox-->
+    <input type="checkbox" v-model="toggle" v-bind:true-value="a" v-bind:false-value="b"/>
+     <!--当选中时-->
+    vm.toggle === vm.a
+    <!--// 当没有选中时-->
+    vm.toggle === vm.b
+
+    <!--radio-->
+    <input type="radio" v-model="pick" v-bind:value="a"/>
+    vm.pick==vm.a
+
+    <!--select option-->
+    <select v-model="selectd">
+        <option v-bind:value="{number:123}">123</option>
+    </select>
+    typeof vm.selected -->'object'
+    vm.selected.number -->123
+    <script src="js/vue.js"></script>
+<script>
+
+</script>
+</body>
+</html>

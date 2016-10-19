@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--指令时带有特殊前缀 v- 。指令的值限定为绑定表达式；指令的职责是表达式的值改变的时候把某些特殊的行为应用到DOM上。-->
+
+
+<!--参数-->
+<!--指令后面可以带一个参数，中间放一个冒号隔开，例如，v-bind指令用于相应的更新HTML特性：-->
+<a v-bind:href="url"></a>
+<!--这里的href是一个参数，他告诉v-bind指令将元素href特性跟表达式url的值绑定，也可以用 特性插值href='{{url}}'获得同样的结果。(实际上在内部特性插值会转为v-bind绑定)-->
+<!--v-on指令用来监听DOM事件：-->
+<a v-on:click="doSomeThing"></a>
+
+
+<!--修饰符-->
+<!--修饰符是以 . 开始的特殊后缀，用于表达指令应当以特殊的方式绑定。-->
+<a v-bind:href.literal="/a/b/c"></a>
+<!--.literal 告诉指令它的解析值是一个字面字符串而不是一个表达式-->
+</body>
+</html>

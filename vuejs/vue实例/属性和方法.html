@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="example"></div>
+    <script src="js/vue.js"></script>
+    <script>
+        var data={a:'1'};
+        var vm =new Vue({
+            data:data,
+            el:'#example'
+
+        });
+        console.log(vm.a==data.a);
+        // 设置属性也会影响到原始数据
+        vm.a=2;
+        console.log(data.a);
+        // ... 反之亦然
+        data.a=3;
+        console.log(vm.a);
+        console.log(vm.$data===data);
+        console.log(vm.$el===document.getElementById('example'))
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id='example'>
+    <my-component></my-component>
+</div>
+    <script src="js/vue.js"></script>
+    <script>
+//        使用Vue.extend()创建一个组件构造器
+        var MyComponent = Vue.extend({
+                template:'<div>A custom component!</div>'
+        });
+//        要把构造器用作组件，需要使用Vue.component(tag,constructor)注册
+        Vue.component('my-component',MyComponent); // 把制定的元素注册成组件 自定义的标签名Vue.js没有强制要求遵循W3C规则，（小写，并且包含一个短杠），尽管遵循这个规则比较好。
+
+//        组件注册成功之后，便可以在父实例的模块中以自定义元素<my-component>的形式使用，确保在初始化根实例之前注册了组件
+        var vm = new Vue({
+            el:'#example'
+        })
+
+//        组件的模板替换了自定义的元素，自定义元素的作用只是作为一个挂载点，可以用实例选项replace决定是否替换
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--vue.js提供了一个方法$watch，用于观察Vue实例上的数据变动，当一些数据需要来自其他数据变化时，使用计算属性而不是一个命令式的$watch回调。-->
+<div id="demo">{{fullName}}</div>
+<script src="js/vue.js"></script>
+<script>
+//    var vm = new Vue({
+//        el:'#demo',
+//        data:{
+//            firstName:'foo',
+//            lastName:'bar',
+//            fullName:'foo bar'
+//        }
+//    });
+//    vm.$watch('firstName',function(val){
+//       this.fullName=val+''+this.lastName
+//    });
+//    vm.$watch('lastName',function(val){
+//        this.fullName=this.firstName+''+val
+//    });
+    //上面的代码是命令式的重复
+    var vm1=new Vue({
+        el:'#demo',
+        data:{
+            firstName:'foo',
+            lastName:'bar',
+            fullName:''
+        },
+        computed:{
+            fullName:function(){
+                return this.firstName+''+this.lastName
+            }
+        }
+    })
+</script>
+</body>
+</html>

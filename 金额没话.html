@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input id="inp" type="number" min="0"/>
+    <script>
+        var oInp = document.getElementById('inp');
+        oInp.oninput=function(){
+            var oVal=oInp.value;
+            console.log(oVal);
+            lookBetter(oVal)
+        };
+
+        function lookBetter(val){
+            if(val===''){return '';}
+            val=val.toString();
+            var betterVal='';
+            var a=[];
+            var index=val.indexOf('.');
+            var l=parseInt(val).toString().length;
+            for(var i=l;i>=3;i-=3){
+                a[a.length]=val.slice(i-3,i);
+            }
+            if(l%3!==0){
+                a[a.length]=val.slice(0,l%3);
+            }
+            for(i=a.length-1;i>0;i--){
+                betterVal+=a[i]+',';
+            }
+            betterVal+=a[0];
+            if(index!==-1){
+                betterVal+=val.slice(index,val.length);
+            }
+            return betterVal;
+        }
+    </script>
+</body>
+</html>

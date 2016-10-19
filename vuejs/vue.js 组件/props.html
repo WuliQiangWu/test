@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="example">
+    <child msg="hello!"></child>
+    <script src="js/vue.js"></script>
+    <script>
+//        使用props传递数据
+//        组件实例的作用域是孤立的。这不意味着不能并且不应该在组件的模板内直接饮用父组件的数据，可以使用props把数据传给子组件
+//        prop是组件数据的一个字段，期望从父组件传下来，子组件需要显示的用props选项声明props:
+
+            Vue.component('child',{
+//            声明props
+            props:['msg'],
+//            prop可以用在模板内
+//            可以用this.msg设置
+            template:'<span>{{msg}}</span>'
+        });
+        var vm=new Vue({
+            el:'#example'
+        });
+    </script>
+
+</body>
+</html>

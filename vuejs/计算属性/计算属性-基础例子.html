@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--模板中绑定表达式是非常便利的，但是他们实际上只用于简单的操作。VUE.js将绑定表达式限定为一个表达式。如果需要多于一个表达式的逻辑，应当使用计算属性。-->
+<div id="example">
+    a={{a}},b={{b}}
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#example",
+        data:{
+            a:1
+        },
+        computed:{
+            //计算属性的getter
+            b:function(){
+                return this.a+1
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

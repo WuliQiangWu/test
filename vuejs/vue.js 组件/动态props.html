@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="example">
+<!--类似于v-bind绑定HTML特性到一个表达式，也可以用v-bind绑定动态Props到父组件的数据，每当父组件的数据变化时，也会传导给子组件：-->
+<div>
+    <input v-model="parentMsg"/>
+        <br>
+    <child v-bind:my-message="parentMsg"></child>
+</div>
+
+<child :my-message="parentMsg"></child>
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#example'
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="example">
+<!--默认单向绑定-->
+    <child :msg="parentMsg"></child>
+<!--双向绑定-->
+    <child :msg.sync="parentMsg"></child>
+<!--单次绑定-->
+    <child :msg.once="parentMsg"></child>
+<!--双向绑定会把子组件的msg属性同步回父组件的parentMsg属性，单次绑定在建立之后不会同步之后的变化-->
+
+    <script src="js/vue.js"></script>
+    <script>
+        var parent
+    </script>
+</body>
+</html>

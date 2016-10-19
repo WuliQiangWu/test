@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <Script>
+        (function(){
+            var d=new Data();
+            var time = d.getHours();
+            if(time>=18){
+                document.write('晚上好')
+            }
+            else{
+                document.write(time);
+            }
+
+            if(time<10){
+                document.write('早上好')
+            }
+            else if(time>=10&&time<=18){
+                document.write('下午好')
+            }
+
+//            三目运算符  (条件)？’成立的‘:’失败的‘
+            var str='';
+            str=(time>10)?"下午好":'haha';
+
+            var theDay= d.getData();
+            switch(theDay){
+                case 5:
+                    break;
+            }
+        })()
+
+    </Script>
+</body>
+</html>

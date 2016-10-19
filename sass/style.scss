@@ -1,0 +1,9 @@
+$font-stack:Helvetica, sans-serif;
+$primary-color:#333;
+$font-size:15px;
+
+body{
+  font:$font-stack;
+  color: $primary-color;
+  font-size: $font-size;
+}

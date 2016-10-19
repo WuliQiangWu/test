@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="demo">
+    <div v-bind:style="{color:activeColor,fontSize:fontSize+'px'}" v-html="message"></div><!-- 直接绑定一个样式对象更好-->
+    <div v-bind:style="styleObj" v-html="message"></div>
+    <!--数组语法可以将对个样式对象应用到一个元素上-->
+    <div v-bind:style="[styleObj,styleObj2]" v-html="message"></div>
+
+    <!--自动添加前缀-->
+    <!--当v-bind：style 使用需要厂商前缀的css属性时，如 tramsform，Vue.js会自动侦测并添加相应的前缀-->
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#demo',
+            data:{
+                activeColor:'red',
+                fontSize:15,
+                message:'myDod',
+                styleObj:{
+                    color:'red',
+                    fontSize:15+'px'
+                },
+                styleObj2:{
+                    backgroundColor:'blue'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

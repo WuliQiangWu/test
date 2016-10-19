@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script src="js/vue.js"></script>
+    <script>
+//        不需要全局注册，每个组件，可以让组件只能用在其它组件内，用实例选项component注册。
+        var Child = Vue.extend({
+
+        });
+        var Parent = Vue.extend({
+            template:'',
+            components:{
+                //<my-component>只能在父组件模板内
+                'my-component':Child
+//                这种封装也适用于其它资源，如指令、过滤器和过渡
+            }
+        })
+    </script>
+</body>
+</html>

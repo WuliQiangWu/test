@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--lazy 在默认情况下，v-model 在input 事件中同步输入框值与数据，可以添加一个特性 lazy，从而改到在 change 事件中同步：-->
+<input v-model="msg" lazy/>
+<!--#number 如果想自动将用户的输入转为 Number 类型（如果原值的转换结果为 NaN 则返回原值），可以添加一个特性 number：-->
+<input v-model="age" number>
+<!--设置一个最小延迟，在每次敲击之后延迟同步输入框中的数据和值。比如每次更新都要进行高能耗操作（例如ajax操作），他就比较有用。-->
+<input v-model="msg" debounce="500"> //500ms之后出现
+<!--debounce 参数不会延迟 input 事件：它延迟“写入”底层数据。因此在使用 debounce 时应当用 vm.$watch() 响应数据的变化。若想延迟 DOM 事件，应当使用 debounce 过滤器。-->
+    <script src="js/vue.js"></script>
+    <script>
+
+    </script>
+
+</body>
+</html>

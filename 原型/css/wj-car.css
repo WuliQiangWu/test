@@ -1,0 +1,604 @@
+html,body,header,section,footer,nav,article,aside,div,iframe,p,span,
+h1,h2,h3,h4,h5,h6,
+form,fieldset,label,legend,input,textarea,button,
+table, caption, tbody, tfoot, thead, tr, th, td,
+dl, dt, dd, ol, ul, li,
+i,b,strong,img,audio, video
+{
+    margin:0;
+    padding:0;
+    outline: none;
+    border:none;
+    font-size: 12px;
+    font-family: '黑体';
+}
+li{
+    list-style:none;
+}
+/*select{*/
+    /*appearance:none;*/
+    /*-moz-appearance:none;*/
+    /*-webkit-appearance:none;*/
+/*}*/
+label{
+    height:auto;
+}
+a{
+    text-decoration: none;
+    outline: none;
+}
+html,body{
+    width:100%;
+    height:100%;
+}
+/*index --css*/
+.wj-index{
+    width:100%;
+    height:100%;
+    background: #e4ecf3;
+}
+.index-price{
+    width:100%;
+    height:1.05rem;
+    padding:0.25rem 0 0.2rem 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid #b3c1ce;
+    background: #ffffff;
+}
+.index-price-tit{
+    text-align: center;
+    font-size: 0.16rem;
+}
+.index-price-pre{
+    margin-top: 0.13rem;
+    text-align: center;
+    font-size: 0.2rem;
+    color: #ff5704;
+    font-weight: bold;
+}
+.index-price-pre span{
+    font-size: 0.25rem;
+}
+.index-safe-wrap{
+
+    width:100%;
+    padding:0 0.16rem;
+    box-sizing: border-box;
+    margin-top:-0.015rem;
+}
+.index-safe{
+    background: #FFFFFF;
+    border: 1px solid #b3c1ce;
+    position: relative;
+    height:auto;
+
+}
+.trans{
+    position: absolute;
+    display: block;
+    width:0.1rem;
+    height:0.1rem;
+    border-left:1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    transform: rotate(135deg);
+    left:48%;
+    top:-0.06rem;
+}
+.index-safe-tit{
+    width:100%;
+    height:0.7rem;
+    border-bottom: 1px solid #b3c1ce;
+    padding-left: 0.31rem;
+    line-height: 0.7rem;
+    font-size:0.18rem ;
+    box-sizing: border-box;
+}
+.index-safe-tit span{
+    color: #ff5704;
+    font-size:0.18rem ;
+}
+.index-safe-tit span i{
+    font-style: normal;
+    font-size: 0.14rem;
+}
+.index-safe-pre{
+    width:100%;
+    height:0.7rem;
+    padding-left: 0.31rem;
+    line-height: 0.7rem;
+    font-size:0.18rem ;
+    box-sizing: border-box;
+}
+.index-safe-pre span{
+    color: #ff5704;
+    font-size:0.18rem ;
+}
+.index-safe-pre span i{
+    font-style: normal;
+    font-size: 0.14rem;
+}
+.index-safe-list{
+    width:100%;
+    box-sizing: border-box;
+    padding:0 0.32rem 0.25rem 0.32rem;
+    overflow: hidden;
+}
+.index-safe-list li{
+    list-style: disc;
+    min-height: 0.25rem;
+    font-size: 0.11rem;
+    width:1.1rem;
+}
+.index-safe-list ul{
+    float: left;
+    width:1.1rem;
+    height:auto;
+}
+.index-safe-list p{
+    float: left;
+    margin-top: 0.3rem;
+    width:100%;
+    height:0.18rem;
+    font-size: 0.14rem;
+    text-align: center;
+}
+.index-safe-list p a{
+    display: block;
+    color: #3f92ee;
+}
+.index-btn{
+    width:100%;
+    height:0.4rem;
+    padding:0 0.16rem;
+    box-sizing: border-box;
+    margin-top: 0.2rem;
+}
+.index-btn a{
+    background: #007eec;
+    text-align: center;
+    display: block;
+    width:100%;
+    height:100%;
+    line-height: 0.4rem;
+    color: #ffffff;
+    font-size: 0.16rem;
+    border-radius: 5px;
+
+}
+/*leader --css*/
+.wj-leader{
+    width:100%;
+    height:100%;
+}
+.leader-tit{
+    box-shadow: #d1d1d1 0 5px;;
+}
+.leader-tit img{
+    display: block;
+    width:100%;
+}
+.leader-tit ul{
+    width:100%;
+    height:auto;
+}
+.leader-tit ul li{
+    width:100%;
+}
+.leader-form{
+    background: #007eec;
+    box-sizing: border-box;
+    width:100%;
+    height:auto;
+    padding:0 0.25rem 0.38rem 0.25rem;
+}
+.leader-form-inp{
+    background: #ffffff;
+    width:100%;
+    border:1px solid #b3c1ce;
+    border-radius: 5px;
+}
+.leader-form-inp p{
+    height:0.55rem;
+    border-bottom: 1px solid #b3c1ce;
+    padding:0 0.15rem;
+    box-sizing: border-box;
+}
+.leader-form-inp p.border-none{
+    border-bottom: none;
+}
+.leader-form-inp p span{
+    font-size: 0.14rem;
+    display: inline-block;
+    height:100%;
+    line-height:0.55rem;
+    float: left;
+}
+.leader-form-inp p select{
+    list-style: none;
+    height:100%;
+    border:none;
+    outline: none;
+    width:60%;
+    line-height: 0.55rem;
+    float: right;
+    font-size: 0.14rem;
+    appearance:none;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari 和 Chrome */
+}
+.leader-icon{
+    background-image: url(../images/leader-icon.png);
+    background-repeat: no-repeat;
+    background-position: 1.35rem center;
+    background-size: 5%;
+}
+.leader-form-che{
+    width:100%;
+    height:0.46rem;
+    line-height: 0.46rem;
+}
+.leader-form-che input{
+    float: left;
+    display: inline-block;
+    width:0.16rem;
+    height:0.16rem;
+    opacity: 0;
+}
+.leader-form-che span{
+    display: inline-block;
+    font-size: 0.12rem;
+    color: #ffffff;
+}
+.leader-form-sub{
+    height:0.4rem;
+    width:100%;
+    color: #0080ed;
+    text-align: center;
+    line-height: 0.4rem;
+    background: #ffba00;
+    border-radius: 3px;
+    font-size: 0.16rem;
+    letter-spacing: 1px;
+}
+.leader-form-sub a{
+    color: #0080ed;
+}
+.leader-logo{
+    width:100%;
+    height:0.96rem;
+    background:url(../images/leader-logo.png) no-repeat center center;
+    background-size: 60%;
+}
+#checks{
+    overflow: hidden;
+    position: relative;
+    width:0.16rem;
+    height:0.16rem;
+    border:1px solid #ffffff;
+    border-radius: 5px;
+    display: inline-block;
+
+    top:6%;
+
+}
+.leader-form-che .bg{
+    background: url(../images/check.png) no-repeat center center;
+
+    background-size:contain;
+}
+/*message --css*/
+.wj-message{
+    width:100%;
+    height:100%;
+    overflow: hidden;
+}
+.mes-tit{
+    width:100%;
+    margin-top:0.2rem;
+    height:0.2rem;
+    font-size: 0.14rem;
+    line-height: 0.2rem;
+    padding: 0 0.15rem;
+    box-sizing: border-box;
+    background: #0080ed;
+    color: #ffffff;
+}
+.mes-inp{
+    width:100%;
+    height:auto;
+    box-sizing: border-box;
+}
+.mes-inp p{
+    height:0.55rem;
+    line-height: 0.55rem;
+    padding:0 0.15rem;
+    border-bottom: 1px solid #CCCCCC;
+}
+.mes-inp p.spec{
+    padding-right:0;
+}
+.mes-inp p span{
+    float: left;
+    font-size: 0.14rem;
+}
+.mes-inp p input{
+    font-size: 0.14rem;
+    float: right;
+    margin-top:0.2rem;
+    width:2rem;
+}
+.mes-sub{
+    width:100%;
+    height:0.4rem;
+    padding:0.15rem;
+    box-sizing: border-box;
+}
+.mes-sub a{
+    display: block;
+    height:0.4rem;
+    width:100%;
+    color: #ffffff;
+    text-align: center;
+    line-height: 0.4rem;
+    background: #0080ed;
+    border-radius: 3px;
+    font-size: 0.16rem;
+    letter-spacing: 1px;
+}
+.mes-checks{
+    height:0.55rem;
+    line-height: 0.55rem;
+    padding:0 0.15rem;
+    border-bottom: 1px solid #CCCCCC;
+}
+.mes-checks input{
+    position: relative;
+    width:0.14rem;
+    height:0.14rem;
+    top:4%;
+}
+.mes-checks span{
+    font-size: 0.14rem;
+
+}
+.mes-inp p .code{
+    height:100%;
+    width:2.15rem;
+    float: right;
+}
+.mes-inp p .code input{
+    margin-top: 0;
+    width:1.35rem;
+    height:100%;
+    float: left;
+}
+.mes-inp p .code button{
+    border:none;
+    outline: none;
+    width:0.8rem;
+    height:100%;
+    text-align: center;
+    line-height: 0.55rem;
+    float: left;
+    color: #FFFFFF;
+    background: #0080ed;
+    font-size: 0.14rem;
+}
+/*sup --css*/
+.sup-inp{
+    width:100%;
+    height:auto;
+    box-sizing: border-box;
+}
+.sup-inp p{
+    height:0.55rem;
+    line-height: 0.55rem;
+    padding:0 0.15rem;
+    border-bottom: 1px solid #CCCCCC;
+}
+.sup-inp p span{
+    float: left;
+    font-size: 0.14rem;
+}
+.sup-inp p input,.sup-inp p select{
+    font-size: 0.14rem;
+    float: right;
+    margin-top:0.2rem;
+    width:1.8rem;
+}
+.sup-inp p select{
+    height:0.2rem;
+
+    outline: none;
+}
+.sup-sub{
+    width:100%;
+    height:0.4rem;
+    padding:0.15rem;
+    box-sizing: border-box;
+}
+.sup-sub a{
+    display: block;
+    height:0.4rem;
+    width:100%;
+    color: #ffffff;
+    text-align: center;
+    line-height: 0.4rem;
+    background: #0080ed;
+    border-radius: 3px;
+    font-size: 0.16rem;
+    letter-spacing: 1px;
+}
+/*success --css*/
+.wj-success{
+    width:100%;
+    height:100%;
+    overflow: hidden;
+}
+.wj-success h1{
+    margin-top: 0.49rem;
+    width:100%;
+    height:0.5rem;
+    padding:0 1.35rem;
+    box-sizing: border-box;
+}
+.wj-success h1 img{
+    display: block;
+    width:100%;
+    height:100%;
+}
+.wj-success .succ-tit{
+    margin-top: 0.2rem;
+    width:100%;
+    height:0.24rem;
+    font-size: 0.18rem;
+    text-align: center;
+    color: #1282ec;
+}
+.wj-success .mess{
+    width:100%;
+    padding:0 0.27rem;
+    box-sizing: border-box;
+    height:auto;
+    margin-top: 0.3rem;
+}
+.wj-success .mess p{
+    overflow: hidden;
+    /*height:0.43rem;*/
+    margin-top: 0;
+    padding:0.13rem 0;
+    box-sizing: border-box;
+}
+.mess-left{
+    float: left;
+    font-size: 0.15rem;
+}
+.mess-right{
+    text-align: right;
+    float: right;
+    width:1.75rem;
+    /*min-height:0.43rem;*/
+    font-size: 0.15rem;
+
+}
+.succ-sub{
+    width:100%;
+    height:0.4rem;
+    padding:0.15rem;
+    box-sizing: border-box;
+}
+.succ-sub a{
+    display: block;
+    height:0.4rem;
+    width:100%;
+    color: #ffffff;
+    text-align: center;
+    line-height: 0.4rem;
+    background: #0080ed;
+    border-radius: 3px;
+    font-size: 0.16rem;
+    letter-spacing: 1px;
+}
+/*upload --css*/
+.wj-upload{
+    width:100%;
+    height:100%;
+    padding-top: 0.13rem;
+    box-sizing: border-box;
+}
+.upload{
+    width:100%;
+    height:1.46rem;
+}
+.upload-tit{
+    width:100%;
+    height:0.27rem;
+    background: #1282ea;
+    padding:0 0.23rem;
+    box-sizing: border-box;
+    line-height: 0.27rem;
+    color: #FFFFFF;
+    font-size: 0.14rem;
+}
+.upload-con{
+    width:100%;
+    padding:0 0.23rem;
+    box-sizing: border-box;
+    height:1.2rem;
+}
+.file-con{
+    width:1.35rem;
+    float: left;
+}
+.file-con span{
+    display: block;
+    width:100%;
+    text-align: center;
+    font-size: 0.14rem;
+    height:0.17rem;
+
+}
+.wj-file{
+    position: relative;
+    margin: 0.2rem auto 0.1rem auto;
+    width:0.9rem;
+    height:0.6rem;
+    border:1px solid #ccc;
+
+}
+.wj-file::before,.wj-file::after{
+    content:'';
+    position:absolute;
+    z-index:10;
+    top:50%;
+    left:50%;
+    margin-top:0;
+    margin-left:-0.12rem;
+    height:0.05rem;
+    width:0.21rem;
+    background-color:#333;
+    opacity: 0.2;
+}
+.wj-file::before {
+    -webkit-transform:rotate(90deg);
+    transform:rotate(90deg);
+}
+.wj-input-file {
+    position:absolute;
+    top:0;
+    right:0;
+    z-index:20;
+    height:100%;
+    width:100%;
+    opacity:0;
+}
+.upload-sub{
+    width:100%;
+    height:0.4rem;
+    padding:0 0.15rem;
+    box-sizing: border-box;
+}
+.upload-sub a{
+    display: block;
+    height:0.4rem;
+    width:100%;
+    color: #ffffff;
+    text-align: center;
+    line-height: 0.4rem;
+    background: #0080ed;
+    border-radius: 3px;
+    font-size: 0.16rem;
+    letter-spacing: 1px;
+}
+/*weui -css*/
+.weui_uploader_file {
+    float: left;
+    position: relative;
+    top:0.21rem;
+    left:0.23rem;
+    width: 0.9rem;
+    height: 0.6rem;
+    background: no-repeat 50%;
+    background-size: cover;
+
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--放在Mustache标签内的文本成为绑定表达式，在Vue.js中，一段绑定表达式由一个简单的JavaScript表达式和可选的一个或多个过滤器构成-->
+
+
+<!--JavaScript表达式-->
+<!--Vue.js 在数据绑定内支持全功能的 JavaScript 表达式-->
+{{number+1}}
+{{'OK'?'yes':'No'}}
+{{message.split('').reverse().join('')}}
+
+
+<!--每个绑定只能包含单个表达式，下面的语句无效-->
+{{var a=1;}}<!--这是一个语句，不是一个表达式-->
+{{if(ok){return message}}}<!--流程控制也不可以，可改用三元表达式-->
+
+<!--过滤器-->
+<!--Vue.js允许在表达式后添加可选的“过滤器（Filter）”,以“管道符”表示-->
+{{message | capitalize}} <!--返回大写化的值-->
+{{message | filterA | filterB}}<!--过滤器可以串联-->
+{{message | filterA | 'arg1' | arg2}}<!--表达式的值始终是第一位参数，带引号的参数视为字符串，而不带引号的参数按表达式计算，这里
+‘arg1’将传给字符串作为第二个参数，表达式arg2的值在计算出来之后作为第三个参数-->
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        (function(){
+            //代理函数--> 用程序来决定返回的新的函数（他是一个生产函数的函数）
+            //模拟数据库
+            var Person={'jim':'m','lili':'l'}
+            var test =function(){
+                if(Person[name]=='m'){
+                    return function(nk,wk){
+                        alert(nk+''+wk)
+                    }
+                }
+                else if(Person[name]=='l'){
+                    return function(nk,wk,fk){
+                        alert(nk+''+wk+''+fk)
+                    }
+                }
+            };
+            test('jim')('ok','ok');
+            test('jim')('ok','ok','no')
+        })()
+    </script>
+</body>
+</html>

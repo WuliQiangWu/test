@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--1.文本-->
+<!--数据绑定最基础的形式是文本插值，使用 “Mustache” 语法（双大括号）-->
+<!--每当这个属性变化时它也会更新。-->
+    <span>message:{{msg}}</span>
+<!--也可以只处理单次插值，今后的数据变化就不会再引起插值更新了-->
+    <span>this will never change:{{* msg}}</span>
+
+<!--原始的HTML-->
+<!--双 Mustache 标签将数据解析为纯文本而不是 HTML。为了输出真的 HTML 字符串，需要用三 Mustache 标签-->
+    <div>{{{ raw_html }}}</div>
+
+<!--HTML特性-->
+<!--Mustache 标签也可以用在 HTML 特性 (Attributes) 内-->
+<div id="item-{{id}}"></div>
+<!--注意在 Vue.js 指令和特殊特性内不能用插值。不必担心，如果 Mustache 标签用错了地方 Vue.js 会给出警告-->
+</body>
+</html>

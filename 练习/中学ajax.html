@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <Script src="zepto.min.js"></Script>
+    <script>
+        $.ajax({
+            url:'submit.php?action=qdata160919',
+            type:'post',
+            data:{},
+            success:function(response) {
+                TOKEN = response.data.token;
+                QUESTIONID = response.data.questionid;
+                var jsondata = response.data.list;
+                var inputstr1 = "";
+                var inputstr2 = "";
+                var htmlstr = '';
+                if (response.code == 0) {
+                    for(var i in jsondata){
+                        if(jsondata[i].ttype==1){
+                            inputstr1 = '';
+                            for(var k in jsondata[i].data) {
+                                inputstr1 += '<label><input type="radio" name="' + jsondata[i].questionid + '" value="'+jsondata[i].data[k].questionid+'"/><span>'+jsondata[i].data[k].snum+'</span><i>'+jsondata[i].data[k].title+'</i></label>'
+                            }
+                            htmlstr +=  '<div><p>'+jsondata[i].title+'</p >'+inputstr1+'</div>';
+
+                        }else if(jsondata[i].ttype==2){
+                            inputstr2 = '';
+                            for(var j in jsondata[i].data) {
+                                inputstr2 += '<label><input type="checkbox" name="' + jsondata[i].questionid + '" value="'+jsondata[i].data[j].questionid+'"/><span>'+jsondata[i].data[j].snum+'</span><i>'+jsondata[i].data[j].title+'</i></label>'
+                            }
+                            htmlstr +=  '<div><p>'+jsondata[i].title+'</p >'+inputstr2+'</div>';
+                        }
+                    }
+                    $('#questionnaire').html(htmlstr);
+                }else {
+                    var msgs = response.msg;
+                    //alert(msgs);
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script src="js/vue.js"></script>
+    <script>
+//        传入Vue构造器的多数选项也可以用在Vue.extend()中，不过有两个特例：data和el。试想如果我们简单地把一个对象作为data选项传给Vue.extend():
+        var data={a:1};
+        var MyComponent = Vue.extend({
+//            data:data,
+            //component所有的实例共享一个data对象，我们应当使用一个函数作为data选项，让这个函数返回一个新的对象：
+            data:function(){
+                return {a:1}
+            }
+        })
+        //el 选项用在 Vue.extend() 中时也须是一个函数。
+    </script>
+</body>
+</html>

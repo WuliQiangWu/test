@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="timeMsg()">click</button>
+<button onclick="timeCount()">clickCount</button>
+<button onclick="stop()">stop</button>
+<input id="txt" type="text"/>
+<Script>
+    (function(){
+        //1异常捕获
+        try{
+            alert(2/0)
+        }catch(e){
+            throw new Error(e)
+        }
+    })();
+
+    function timeMsg(){
+        //一秒钟以后出发的函数
+        var t=setTimeout('alert(1)',1000)
+    }
+    var c=0;
+    var t;
+    function timeCount(){
+        document.getElementById('txt').value=c;
+        c=c+1;
+        t=setTimeout('timeCount()',1000)
+    }
+    function stop(){
+        clearTimeout(t)
+    }
+</Script>
+</body>
+</html>

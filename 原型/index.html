@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html style="font-size: 100px">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script type="text/javascript">
+        function setFontsize(){
+            document.documentElement.style.fontSize=window.innerWidth/320*100+'px'
+        }
+        setFontsize();
+        window.addEventListener('resize',setFontsize,false);
+    </script>
+    <title>index</title>
+    <link rel="stylesheet" href="css/wj-car.css" type="text/css"/>
+</head>
+<body>
+    <section class="wj-index">
+        <div class="index-price">
+            <p class="index-price-tit">车险未来付为您计算的简易报价</p>
+            <p class="index-price-pre"><span>￥6969</span>.00起</p>
+        </div>
+        <div class="index-safe-wrap">
+            <div class="index-safe">
+                <span class="trans"></span>
+                <div class="index-safe-tit">交强险：<span>￥950<i>.00</i></span></div>
+                <div class="index-safe-pre">商业险：<span>￥6013<i>.00</i></span></div>
+                <div class="index-safe-list">
+                    <ul>
+                        <li>车损</li>
+                        <li>司机(1万/座)</li>
+                        <li>划痕(2000元)</li>
+                        <li>玻璃(国产玻璃)</li>
+                    </ul>
+                    <ul>
+                        <li>三者(50万)</li>
+                        <li>乘客(1万/座)</li>
+                        <li>盗抢</li>
+                        <li>不计免赔(车损/三者/盗抢/司乘/附加)</li>
+                    </ul>
+                    <p><a href="javascript:">更改商业险&gt;</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="index-btn"><a href="javascript:">立即投保</a></div>
+
+    </section>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //js原型模式（prototype）
+        //原型是一个对象，其他对象可以通过他实现属性的继承
+        //所有的对象在默认的情况下都有一个原型，。因为原型的本身也是对象，所以一个类的真正原型是被类的内部的prototype属性所持有。
+        //什么可以被称为对象 在js中 一个对象就是任何的无序的键值对的集合 function var a={}
+        //如果它不是一个主数据类型（undefined，none，Boolean，number，string） 其他的都叫做对象。
+
+        //js中 它的原型（prototype）是和函数function紧密连接的
+//        var  o={}  他不是function 他有原型么
+//        答：必须的
+//        每一个通过函数和new操作符生成出来的对象都持有一个属性__proto__，这个属性保存了创建它的构造函数的prototype的原型的引用
+        (function(){
+            function Person(){} //定义一个空对象
+            Person.prototype.name="jajja";
+            Person.prototype.sayName=function(){
+                alert(this.name);//这个this表示调用本函数的一个具体实例化的类
+            };
+//            new Person().sayName();
+
+            var cat ={ //cat空类
+
+            };
+            // 默认隐藏的调用下面的代码
+            Object.getPrototypeOf(cat).name='TOM';
+            cat.__proto__.master='uspcan';
+            //测试
+            cat.age=2;
+            cat['sex']='mail';
+//            alert(cat.name+''+cat.age+''+cat.master+''+cat.sex)
+
+            //利用原型模式实现简单的继承
+            function Per(){
+                this.getName=function(str){
+                    alert(str)
+                }
+            }
+            Per.prototype.gatAge=function(age){
+                alert(age)
+            };
+            var a={};
+            a.__proto__=Per.prototype;
+            a.gatAge(2);
+
+            //简单的方式实现继承
+            //JS中无法实现多继承
+            var b={};
+            b.__proto__=new Per();
+            b.__proto__.constructor=b;
+//            b.gatAge(1);
+//            b.getName('javascript')
+
+//            串联继承
+            function M(){
+                this.showM=function(){
+                    alert('M is m ')
+                }
+            }
+            function N(){
+                this.showN=function(){
+                    alert('N is n ')
+                }
+            }
+            function K(){};
+            N.prototype=new M();
+            N.prototype.constructor=N;
+            K.prototype=new N();
+            K.prototype.constructor=K;
+            var boo=new K();
+            boo.showM();
+            boo.showN();
+
+        })()
+    </script>
+</body>
+</html>

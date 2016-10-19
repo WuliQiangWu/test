@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script src="js/vue.js"></script>
+    <script>
+//        自定义标签不能用在ul,select,table等对内部元素有限制的标签内。放在这些元素内部的自定义标签将被提到元素的外面，因而渲染不正确。
+//        对于自定义的元素，应当使用is特性：
+//<template> 不能用在 <table> 内，这时应使用 <tbody>，<table> 可以有多个 <tbody>
+    </script>
+<table>
+    <tr is="my-component"></tr>
+</table>
+</body>
+</html>

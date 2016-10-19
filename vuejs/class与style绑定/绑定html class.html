@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="demo">
+    <div class="static" v-bind:class="{'class1':isA,'class2':isB}"></div>
+    <div v-bind:class="classObj"></div>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#demo",
+        data:{
+            isA:true,
+            isB:true,
+            classObj:{
+                class1:true,
+                class2:true
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

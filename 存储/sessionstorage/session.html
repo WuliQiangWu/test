@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+    <script>
+        //当sessionstroage中有数据时，可以使用getItem()或者直接访问属性名来获取数据
+        for(var i=0;i<sessionStorage.length;i++){
+            var key=sessionStorage.key(i);
+            var value=sessionStorage.getItem(key);
+            alert( key+'='+value);
+        }
+    </script>
+</body>
+</html>

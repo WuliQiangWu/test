@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>随机点名</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #div1{
+            width: 400px;
+            height: 100px;
+            background: #ccc;
+            margin:50px auto;
+            box-shadow:0 0 10px chartreuse;
+            text-align: center;
+            font-size: 30px;
+            line-height: 50px;
+        }
+        #div1 input{
+            width: 100px;
+            height: 30px;
+            background: chartreuse;
+        }
+        table{
+            border:1px;
+            margin: 20px auto;
+        }
+        td{
+            border: 1px solid #4CBDF1;
+            font-size: 20px;
+            text-align: center;
+            background: #cccccc;
+            width: 120px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="div1">
+    <p id="p1">姓名</p>
+    <div>
+        <input id="bt1" type="button" value="开始">
+        <input id="bt2" type="button" value="随机十次">
+    </div>
+</div>
+<script>
+    var arrName = ["钱森","李宁","田金林","李明","李宏胜","吕朋丽","潘雪蕊","曲应钦","韩奎星","祁琦","成敏","吴涛","张劲松","李娜","彭跃勇", "李蓉蓉",
+        "宋龙飞","杨浩男","白忠胜","黄华","黄青鹏","宋健","王明辉","蔡鲁立","邹润东","陈念鲁","昝石磊","吴增喜","王皓宇" ,"胡厚传" ,
+        "逯振强" ,"段石磊" ,"王超" ,"张中华" ,"崔京京" ,"张淑芳" ," 于海跃" , "高盈" ,"焦伟军" ,"安佰凯" ,"陈焕海" ,"孙露露" ,"王云飞" ,
+        "岳文喆" ," 董静" ,"曹文博" ,"万龙" ,"康恺" ,"范珂振" ,"张岩鹏" ,"徐亮" ,"张永健" ," 陆家琪" ,"马彩娟","陶懿臻" ,"高林莉" ,"陈阔" ,
+        "翟科" ,"魏前行" ,"何忠明" ];
+    var column=8;
+    var row=8;
+    var oTb=document.createElement("table");
+    for(var i=0;i<row;i++){
+        var oTr=document.createElement("tr");
+        for(var j=0;j<column;j++){
+            var oTd=document.createElement("td");
+            var index=i*row+j;
+            oTd.innerHTML=arrName[index];
+            oTr.appendChild(oTd);
+        }
+        oTb.appendChild(oTr);
+    }
+    document.body.appendChild(oTb);
+
+    var oBt1=document.getElementById("bt1");
+    var oP1=document.getElementById("p1");
+    var timer;
+    var flag=false;
+    oBt1.onclick=function(){
+        if(!flag){
+            timer=setInterval(function(){
+                var rdIndex=Math.floor(Math.random()*60);//[0,60]
+                var tdList=oTb.getElementsByTagName("td");
+                for(var i=0;i<tdList.length;i++){
+                    tdList[i].style.background="#cccccc";
+                }
+                tdList[rdIndex].style.background="red";
+                oP1.innerHTML=arrName[rdIndex];
+            },300);
+            this.value="停止";
+            this.style.background="red";
+        }else{
+            clearInterval(timer);
+            this.value="开始";
+            this.style.background="chartreuse";
+        }
+        flag=!flag;
+    }
+
+    var timer2;
+    var oBt2=document.getElementById("bt2");
+    var count=0;
+    oBt2.onclick=function(){
+        var that=this;
+        timer2=setInterval(function(){
+            if(count<10){
+                var rdIndex=Math.floor(Math.random()*60);//[0,60]
+                var tdList=oTb.getElementsByTagName("td");
+                for(var i=0;i<tdList.length;i++){
+                    tdList[i].style.background="#cccccc";
+                }
+                tdList[rdIndex].style.background="red";
+                oP1.innerHTML=arrName[rdIndex];
+                count++;
+                that.value=10-count;
+                that.style.background="red";
+            }else{
+                clearInterval(timer2);
+                count=0;
+                that.value="随机十次";
+                that.style.background="chartreuse";
+            }
+        },300);
+    }
+</script>
+</body>
+</html>

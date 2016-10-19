@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="example">
+    <script src="js/vue.js"></script>
+    <script>
+        var vm =new Vue({
+            el:'#example',
+            data:{
+                a:1
+            },
+            // created 钩子在实例创建后调用
+            created:function(){
+                console.log('a is '+ this.a)
+            }
+        })
+    </script>
+</body>
+</html>

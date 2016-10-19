@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html style="font-size: 100px">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script>
+        function setFontSize(){
+            document.documentElement.style.fontSize=window.innerWidth/375*100+'px';
+        }
+        setFontSize();
+        window.addEventListener('resize',setFontSize,false)
+    </script>
+    <title>自己人-报名审核</title>
+    <link rel="stylesheet" type="text/css" href="css/index-style.css"/>
+</head>
+<body>
+<section class="sx-wrap02">
+    <div class="wrap2-top">
+        <h4 class="top-tit">住我这</h4>
+        <p class="top-ps">(如果不提供可直点击下一页)</p>
+    </div>
+    <div class="wrap2-present">
+        <label>
+            <span class="present-pre">概况：</span>
+            <textarea class="present-con" placeholder="对住宿环境的简单介绍"></textarea>
+        </label>
+    </div>
+    <div class="wrap2-order">
+        <label>
+            <span class="order-tit">可接待最大人数：</span>
+            <input class="order-inp" placeholder="请输入接待最大人数"/>
+        </label>
+    </div>
+    <div class="wrap2-order">
+        <label>
+            <span class="order-tit">可接待校友入住的时间：</span>
+            <input class="order-inp" placeholder="如每周五、周六、周日"/>
+        </label>
+    </div>
+    <div class="wrap2-present">
+        <label>
+            <span class="present-pre">地址：</span>
+            <textarea class="present-con" placeholder="请输入详细地址"></textarea>
+        </label>
+    </div>
+    <div class="wrap2-upload">
+        <span class="upload-tit">住宿环境照片:<i>单击下方添加住宿环境照片</i></span>
+        <div class="upload-pic">
+            <input class="sx-upload-file" type="file">
+        </div>
+    </div>
+    <div class="wrap2-order">
+        <label>
+            <span class="order-tit">每晚定价：</span>
+            <input class="order-inp" placeholder=""/>
+        </label>
+    </div>
+    <div class="wrap3-btn">
+        <a class="btn1" href="javascript:"> &lt; </a>
+        <a class="btn2" href="javascript:">下一页</a>
+    </div>
+</section>
+</body>
+</html>
